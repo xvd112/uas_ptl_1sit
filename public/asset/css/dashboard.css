@@ -1,0 +1,19 @@
+.user-drop {
+    position: relative;
+    margin: -6px;
+}
+
+.user-drop .image {
+    display: inline-block;
+    padding-left: .8rem;
+}
+
+.user-drop img {
+    height: auto;
+    width: 2.1rem;
+}
+
+.user-drop .info {
+    display: inline-block;
+    padding: 5px 5px 5px 10px;
+}

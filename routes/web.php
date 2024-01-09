@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing.home');
+    return view('landing.home.index');
+});
+
+// Route::get('/', function () {
+//     return view('dashboard.dashboard');
+// });
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', function () {
+        return view('dashboard.dashboard');
+    });
 });

@@ -22,36 +22,53 @@
         </a>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
-                            class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li><a class="{{ $active === '' ? 'active' : '' }}" href="/">Home</a></li>
+                <li class="dropdown {{ $active === 'tentang' ? 'active' : '' }}">
+                    <a href="#"><span>Tentang
+                            Kami</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         <li><a href="/sejarah">Sejarah</a></li>
                         <li><a href="/visimisi">Visi & Misi</a></li>
                         <li><a href="/dokter">Daftar Dokter</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>Fasilitas</span> <i
-                            class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li class="dropdown {{ $active === 'fasilitas' ? 'active' : '' }}">
+                    <a href="#"><span>Fasilitas</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         <li><a href="/bedah">Bedah</a></li>
                         <li><a href="/endoskopi">Endoskopi</a></li>
                         <li><a href="/radiology">Radiology</a></li>
                     </ul>
                 </li>
-                <li><a href="/berita">Berita</a></li>
-                <li><a href="/daftar">Pendaftaran</a></li>
-                <li><a href="/kontak">Kontak</a></li>
-                <li class="log">
-                    <div class="row-md-3 d-flex">
-                        <div class="col" style="float: right">
-                            <a href="/login" class="btn-login" role="button">Login</a>
+                <li><a class="{{ $active === 'berita' ? 'active' : '' }}" href="/berita">Berita</a></li>
+                <li><a class="{{ $active === 'daftar' ? 'active' : '' }}" href="/daftar">Pendaftaran</a></li>
+                <li><a class="{{ $active === 'kontak' ? 'active' : '' }}" href="/kontak">Kontak</a></li>
+                @auth
+                    <li class="dropdown">
+                        <a href="#"><span>Welcome back,
+                                @php echo(explode(" ", auth()->user()->name)[0]) @endphp</span>
+                            <i class="bi bi-chevron-down dropdown-indicator"> </i>
+                        </a>
+                        <ul>
+                            <li><a href="/dashboard">My Dashboard</a></li>
+                            <li>
+                                <form method="POST" action="{{ url('/logout') }}" id="form-logout">
+                                    @csrf
+                                    <input type="hidden" value="{{ Route::current()->getName() }}" name="url">
+                                    <button class="btn-logout" type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="log ms-auto">
+                        <div class="row-md-3 d-flex">
+                            <div class="col">
+                                <a href="/login" target="_blank" class="btn-login" role="button">Login</a>
+                            </div>
                         </div>
-                        <div class="col" style="float: right">
-                            <a href="/signup" class="btn-sign-up" role="button">Sign Up</a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endauth
             </ul>
         </nav><!-- .navbar -->
 

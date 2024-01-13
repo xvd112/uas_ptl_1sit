@@ -27,9 +27,13 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                {{-- <a href="/dashboard/profile" class="dropdown-item"><i class="fa-solid fa-gear"></i> Profile</a>
-                <div class="dropdown-divider"></div> --}}
-                <a href="/logout" class="dropdown-item dropdown-footer">Sign Out</a>
+                {{-- <a href="/logout" class="dropdown-item dropdown-footer">Sign Out</a> --}}
+                <form class="dropdown-item dropdown-footer" method="POST" action="{{ url('/logout') }}"
+                    id="form-logout">
+                    @csrf
+                    <input type="hidden" value="{{ Route::current()->uri() }}" name="url">
+                    <button class="btn-logout" type="submit">Logout</button>
+                </form>
             </div>
         </li>
         <li class="nav-item">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2024 at 03:58 AM
+-- Generation Time: Jan 13, 2024 at 09:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uas_rs`
+-- Database: `dbrs_klmpk2`
 --
 
 -- --------------------------------------------------------
@@ -108,6 +108,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Safira Putri Nabila', 'putri@mail.com', NULL, '$2y$12$HWxrpcTajz3ZxlhZxzzG0.GfPu1JCJZ8kwPU7xU6OQ9silegrcGLG', NULL, '2024-01-12 01:51:02', '2024-01-12 01:51:02'),
+(8, 'Alvikri Mukhlis', 'alvi@mail.com', NULL, '$2y$12$ArWUU88NO/bNArGlb0vc0.8XjNptrzwhJuohqCR.4cSx37xEfa4Pi', NULL, '2024-01-12 23:46:32', '2024-01-12 23:46:32');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -171,7 +179,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

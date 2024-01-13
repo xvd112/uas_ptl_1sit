@@ -8,9 +8,9 @@ div .btn-login {
     background-color: #006a5d;
     border: #006a5d solid 1px;
     border-color: transparent;
-    padding: 3px 10px 3px 15px;
+    padding: 3px 15px 3px 15px;
     color: white;
-    border-radius: 50px 0px 0px 50px;
+    border-radius: 50px 50px 50px 50px;
     font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 600;
@@ -19,9 +19,9 @@ div .btn-login {
 div .btn-login:hover {
     background-color: #004a42;
     border: #088e7e solid 1px;
-    padding: 3px 10px 3px 15px;
+    padding: 3px 15px 3px 15px;
     color: white;
-    border-radius: 50px 0px 0px 50px;
+    border-radius: 50px 50px 50px 50px;
     font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 600;
@@ -51,4 +51,27 @@ div .btn-sign-up:hover {
     font-size: 16px;
     font-weight: 600;
     white-space: nowrap;
+}
+
+.btn-logout {
+    text-decoration: none;
+    border: 0;
+    background: transparent;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: bold;
+    color: #006a5d;
+}
+
+.btn-logout:hover,
+.btn-logout .active:hover,
+.btn-logout:hover>a {
+    color: var(--color-secondary);
+}
+
+.btn-logout:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
 }

@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('asset/logo.png') }}" rel="icon">
-    <link href="{{ asset('asset/logo.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('asset/img/logo.png') }}" rel="icon">
+    <link href="{{ asset('asset/img/logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,9 +31,9 @@
     <link href="{{ asset('asset_landing/assets/css/main.css') }}" rel="stylesheet">
 
     {{-- Font Awesome 6.5.1 --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css"
+        rel="stylesheet">
 
     {{-- Link CSS --}}
     <link href="{{ asset('asset/css/landing.css') }}" rel="stylesheet">

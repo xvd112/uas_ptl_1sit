@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="padding-left: 15px; padding-right:15px">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -18,10 +18,10 @@
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <div class="user-drop justify-content-center">
                     <div class="image">
-                        <img src="{{ asset('asset/user.png') }}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('asset/img/user.png') }}" class="img-circle" alt="User Image">
                     </div>
                     <div class="info">
-                        User
+                        {{ explode(' ', auth()->user()->name)[0] }}
                     </div>
                     <i class="nav-icon fa-solid fa-caret-down"></i>
                 </div>

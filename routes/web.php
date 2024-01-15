@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,20 +17,39 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.home.index', ['active' => '']);
-});
+/* Landing */
+// -----------------------------------------------
+// Home
+Route::get('/', [LandingController::class, 'index']);
+// -----------------------------------------------
+/* End Landing */
 
-Route::prefix('dashboard')->middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.dashboard');
-    });
-});
+/* Auth */
+// -----------------------------------------------
+// Register
+Route::get('/register', [AuthController::class, 'showRegister'])->middleware('guest'); // Buka Form Register
+Route::post('/register', [AuthController::class, 'register']); // Fungsi Register
 
-Route::get('/register', [AuthController::class, 'showRegister'])->middleware('guest');
-Route::post('/register', [AuthController::class, 'register']);
+// Login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest'); // Buka Form Login
+Route::post('/login', [AuthController::class, 'login']); // Fungsi Login
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login']);
-
+// Logout
 Route::post('/logout', [AuthController::class, 'logout']);
+// -----------------------------------------------
+/* End Auth */
+
+/* Dashboard */
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+    // Beranda
+    Route::get('/', function () {
+        return view('dashboard.dashboard', ['active' => '']);
+    });
+
+    // Modul User -> CRUD
+    Route::resource('user', UserController::class);
+
+    // Modul Galery -> CRUD
+    Route::resource('galeri', GaleryController::class);
+});
+/* End Dashboard */

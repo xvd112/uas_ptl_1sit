@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | RS Kasih Ibu</title>
+    <title>Dashboard | RS Kasih Ibu</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -31,16 +31,20 @@
     <link rel="stylesheet" href="{{ asset('asset_dashboard/plugins/summernote/summernote-bs4.min.css') }}">
 
     {{-- Favicon --}}
-    <link href="{{ asset('asset/logo.png') }}" rel="icon">
-    <link href="{{ asset('asset/logo.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('asset/img/logo.png') }}" rel="icon">
+    <link href="{{ asset('asset/img/logo.png') }}" rel="apple-touch-icon">
 
     {{-- Font Awesome 6.5.1 --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css"
+        rel="stylesheet">
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('asset/css/dashboard.css') }}">
+
+    {{-- Bootstrap 5.3 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -121,6 +125,11 @@
     {{-- <script src="{{ asset('asset_dashboard/dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('asset_dashboard/dist/js/pages/dashboard.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="{{ asset('asset/js/dashboard.js') }}"></script> --}}
 </body>
 
 </html>

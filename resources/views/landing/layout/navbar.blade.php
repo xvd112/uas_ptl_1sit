@@ -46,11 +46,11 @@
                 @auth
                     <li class="dropdown">
                         <a href="#"><span>Welcome back,
-                                @php echo(explode(" ", auth()->user()->name)[0]) @endphp</span>
+                                {{ explode(' ', auth()->user()->name)[0] }}</span>
                             <i class="bi bi-chevron-down dropdown-indicator"> </i>
                         </a>
                         <ul>
-                            <li><a href="/dashboard">My Dashboard</a></li>
+                            <li><a href="/dashboard" target="_blank">My Dashboard</a></li>
                             <li>
                                 <form method="POST" action="{{ url('/logout') }}" id="form-logout">
                                     @csrf

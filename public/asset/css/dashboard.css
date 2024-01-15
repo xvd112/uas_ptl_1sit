@@ -25,3 +25,33 @@
     font-size: 15px;
     text-transform: none;
 }
+
+aside a {
+    text-decoration: none;
+}
+
+thead,
+#no {
+    text-align: center;
+}
+
+.btn-right {
+    float: right;
+    justify-content: right;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+td a,
+td button {
+    color: rgb(0, 102, 255);
+}
+
+ol li a {
+    text-decoration: none;
+}
+
+td img {
+    width: auto;
+    height: 100px;
+}

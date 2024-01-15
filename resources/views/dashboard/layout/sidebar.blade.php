@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-        <img src="{{ asset('asset/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="{{ asset('asset/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Rumah Sakit Kasih Ibu</span>
     </a>
@@ -12,10 +12,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('asset/user.png') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('asset/img/user.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" style="pointer-events: none" class="d-block">User</a>
+                <a href="#" style="pointer-events: none" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link active">
+                    <a href="/dashboard" class="nav-link {{ $active === '' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Beranda
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/dokter" class="nav-link">
+                    <a href="/dashboard/dokter" class="nav-link {{ $active === 'dokter' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-user-doctor"></i>
                         <p>
                             Dokter
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/fasilitas" class="nav-link">
+                    <a href="/dashboard/fasilitas" class="nav-link {{ $active === 'fasilitas' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-hospital"></i>
                         <p>
                             Fasilitas
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/berita" class="nav-link">
+                    <a href="/dashboard/berita" class="nav-link {{ $active === 'berita' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-newspaper"></i>
                         <p>
                             Berita
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ $active === 'info' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-circle-info"></i>
                         <p>
                             Info Umum RS
@@ -87,7 +87,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/user" class="nav-link">
+                    <a href="/dashboard/user" class="nav-link {{ $active === 'daftar' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-address-card"></i>
                         <p>
                             Pendaftaran
@@ -95,10 +95,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/user" class="nav-link">
+                    <a href="/dashboard/user" class="nav-link {{ $active === 'user' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
                             Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard/galeri" class="nav-link {{ $active === 'galeri' ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-images"></i>
+                        <p>
+                            Galeri
                         </p>
                     </a>
                 </li>

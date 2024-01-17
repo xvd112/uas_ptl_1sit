@@ -13,7 +13,8 @@ class GaleryController extends Controller
     public function index()
     {
         return view('dashboard.galeri.index', [
-            'active' => 'galeri',
+            'page' => 'Galeri',
+            'url' => 'galeri',
             'data' => Galery::all()
         ]);
     }
@@ -24,7 +25,8 @@ class GaleryController extends Controller
     public function create()
     {
         return view('dashboard.galeri.form', [
-            'active' => 'galeri',
+            'page' => 'Galeri',
+            'url' => 'galeri',
             'subtitle' => 'Insert',
             'data' => Galery::all()
         ]);
@@ -61,7 +63,8 @@ class GaleryController extends Controller
     public function show(string $id)
     {
         return view('dashboard.galeri.view', [
-            'active' => 'galeri',
+            'page' => 'Galeri',
+            'url' => 'galeri',
             'subtitle' => 'View',
             'data' => Galery::find($id)
         ]);
@@ -73,7 +76,8 @@ class GaleryController extends Controller
     public function edit(string $id)
     {
         return view('dashboard.galeri.edit', [
-            'active' => 'galeri',
+            'page' => 'Galeri',
+            'url' => 'galeri',
             'subtitle' => 'Update',
             'data' => Galery::find($id)
         ]);

@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\SyaratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,10 @@ use App\Http\Controllers\LandingController;
 // -----------------------------------------------
 // Home
 Route::get('/', [LandingController::class, 'index']);
-// -----------------------------------------------
+
+// Pendaftaran
+Route::get('/daftar', [LandingController::class, 'daftar']);
+Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar');
 /* End Landing */
 
 /* Auth */
@@ -43,7 +48,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Beranda
     Route::get('/', function () {
-        return view('dashboard.dashboard', ['active' => '']);
+        return view('dashboard.dashboard', ['page' => '']);
     });
 
     // Modul User -> CRUD
@@ -51,5 +56,13 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Modul Galery -> CRUD
     Route::resource('galeri', GaleryController::class);
+
+    // Modul Pendaftaran -> CRUD
+    Route::resource('daftar', DaftarController::class);
+
+    // Modul Pesyaratan -> CRUD
+    Route::resource('syarat', SyaratController::class);
 });
+// Modul User -> CRUD
+// Route::resource('dashboard/user', UserController::class)->middleware('admin');
 /* End Dashboard */

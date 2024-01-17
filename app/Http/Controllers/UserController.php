@@ -12,8 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         return view('dashboard.user.index', [
-            'active' => 'user',
+            'page' => 'User',
+            'url' => 'user',
             'data' => User::all()
         ]);
     }
@@ -24,7 +26,8 @@ class UserController extends Controller
     public function create()
     {
         return view('dashboard.user.form', [
-            'active' => 'user',
+            'page' => 'User',
+            'url' => 'user',
             'subtitle' => 'Insert',
             'data' => User::all()
         ]);
@@ -54,7 +57,8 @@ class UserController extends Controller
     public function show(string $id)
     {
         return view('dashboard.user.view', [
-            'active' => 'user',
+            'page' => 'User',
+            'url' => 'user',
             'subtitle' => 'View',
             'data' => User::find($id)
         ]);
@@ -66,7 +70,8 @@ class UserController extends Controller
     public function edit(string $id)
     {
         return view('dashboard.user.edit', [
-            'active' => 'user',
+            'page' => 'User',
+            'url' => 'user',
             'subtitle' => 'Update',
             'data' => User::find($id)
         ]);

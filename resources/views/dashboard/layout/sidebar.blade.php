@@ -26,7 +26,7 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link {{ $active === '' ? 'active' : '' }}">
+                    <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Beranda
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/dokter" class="nav-link {{ $active === 'dokter' ? 'active' : '' }}">
+                    <a href="/dashboard/dokter" class="nav-link {{ Request::is('dashboard/dokter*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-user-doctor"></i>
                         <p>
                             Dokter
@@ -42,7 +42,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/fasilitas" class="nav-link {{ $active === 'fasilitas' ? 'active' : '' }}">
+                    <a href="/dashboard/fasilitas"
+                        class="nav-link {{ Request::is('dashboard/fasilitas*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-hospital"></i>
                         <p>
                             Fasilitas
@@ -50,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/berita" class="nav-link {{ $active === 'berita' ? 'active' : '' }}">
+                    <a href="/dashboard/berita" class="nav-link {{ Request::is('dashboard/berita*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-newspaper"></i>
                         <p>
                             Berita
@@ -58,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ $active === 'info' ? 'active' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-circle-info"></i>
                         <p>
                             Info Umum RS
@@ -67,19 +68,22 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/dashboard/sejarah" class="nav-link">
+                            <a href="/dashboard/sejarah"
+                                class="nav-link {{ Request::is('dashboard/sejarah*') ? 'active' : '' }}">
                                 <i class="nav-icon fa-solid fa-timeline"></i>
                                 <p>Sejarah</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/visi" class="nav-link">
+                            <a href="/dashboard/visi"
+                                class="nav-link {{ Request::is('dashboard/visi*') ? 'active' : '' }}">
                                 <i class="nav-icon fa-solid fa-bullseye"></i>
                                 <p>Visi & Misi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/kontak" class="nav-link">
+                            <a href="/dashboard/kontak"
+                                class="nav-link {{ Request::is('dashboard/kontak*') ? 'active' : '' }}">
                                 <i class="nav-icon fa-solid fa-address-book"></i>
                                 <p>Kontak</p>
                             </a>
@@ -87,23 +91,43 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/user" class="nav-link {{ $active === 'daftar' ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-address-card"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-regular fa-hospital-user"></i>
                         <p>
-                            Pendaftaran
+                            Pasien
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/dashboard/daftar"
+                                class="nav-link {{ Request::is('dashboard/daftar*') ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-address-card"></i>
+                                <p> Pendaftaran </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dashboard/syarat"
+                                class="nav-link {{ Request::is('dashboard/syarat*') ? 'active' : '' }}">
+                                <i class="nav-icon fa-regular fa-shield-exclamation"></i>
+                                <p> Persyaratan </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                @can('admin')
+                    <li class="nav-item">
+                        <a href="/dashboard/user" class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}">
+                            <i class="nav-icon fa-solid fa-users"></i>
+                            <p>
+                                Users
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 <li class="nav-item">
-                    <a href="/dashboard/user" class="nav-link {{ $active === 'user' ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-users"></i>
-                        <p>
-                            Users
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/dashboard/galeri" class="nav-link {{ $active === 'galeri' ? 'active' : '' }}">
+                    <a href="/dashboard/galeri"
+                        class="nav-link {{ Request::is('dashboard/galeri*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-images"></i>
                         <p>
                             Galeri

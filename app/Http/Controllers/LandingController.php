@@ -10,8 +10,12 @@ class LandingController extends Controller
     public function index()
     {
         return view('landing.home.index', [
-            'active' => '',
             'team' => Galery::where('category', 'team')->get()
         ]);
+    }
+
+    public function daftar()
+    {
+        return view('landing.daftar.daftar');
     }
 }

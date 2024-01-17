@@ -21,7 +21,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-9">
-                        <h4>View Galery : {{ $data->title }}</h4>
+                        <h4>View Persyaratan : {{ $data->Fasilitas }}</h4>
                     </div>
 
                     <div class="col-md-3">
@@ -39,27 +39,12 @@
             </div>
             <div class="card-body">
                 <div class="row g-0">
-                    <div class="col-md-3">
-                        <img src="{{ asset('asset/img/' . $data->photo) }}" class="img-fluid rounded-start" alt="...">
-                    </div>
                     <div class="col-md-9">
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="title" class="col-sm-2">Title</label>
+                                <label for="persyaratan" class="col-sm-2">Persyaratan</label>
                                 <div class="col-sm-10">
-                                    : {{ $data->title }}
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="category" class="col-sm-2">Kategori</label>
-                                <div class="col-sm-10">
-                                    : {{ $data->category }}
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="desc" class="col-sm-2">Deskripsi</label>
-                                <div class="col-sm-10">
-                                    : {{ Str::of($data->desc)->toHtmlString() }}
+                                    : {{ Str::of($data->persyaratan)->toHtmlString() }}
                                 </div>
                             </div>
                         </div>

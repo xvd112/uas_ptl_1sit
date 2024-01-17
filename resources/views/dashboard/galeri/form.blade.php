@@ -92,7 +92,7 @@
                     <div class="mb-3 row">
                         <label for="desc" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc"
+                            <textarea class="form-control @error('desc') is-invalid @enderror" id="summernote" name="desc"
                                 placeholder="Deskripsi">{{ old('desc') }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">

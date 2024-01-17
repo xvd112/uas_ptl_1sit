@@ -55,3 +55,7 @@ td img {
     width: auto;
     height: 100px;
 }
+
+.nav-treeview a {
+    padding-left: 50px;
+}

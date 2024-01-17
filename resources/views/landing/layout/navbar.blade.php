@@ -22,8 +22,9 @@
         </a>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="{{ $active === '' ? 'active' : '' }}" href="/">Home</a></li>
-                <li class="dropdown {{ $active === 'tentang' ? 'active' : '' }}">
+                <li><a class="{{ Request::is('/') ? 'active' : '' }}" href="/">Home</a></li>
+                <li
+                    class="dropdown {{ Request::is('sejarah*') || Request::is('visimisi*') || Request::is('dokter*') ? 'active' : '' }}">
                     <a href="#"><span>Tentang
                             Kami</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
@@ -32,7 +33,8 @@
                         <li><a href="/dokter">Daftar Dokter</a></li>
                     </ul>
                 </li>
-                <li class="dropdown {{ $active === 'fasilitas' ? 'active' : '' }}">
+                <li
+                    class="dropdown {{ Request::is('bedah*') || Request::is('endoskopi*') || Request::is('radiology*') ? 'active' : '' }}">
                     <a href="#"><span>Fasilitas</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         <li><a href="/bedah">Bedah</a></li>
@@ -40,9 +42,9 @@
                         <li><a href="/radiology">Radiology</a></li>
                     </ul>
                 </li>
-                <li><a class="{{ $active === 'berita' ? 'active' : '' }}" href="/berita">Berita</a></li>
-                <li><a class="{{ $active === 'daftar' ? 'active' : '' }}" href="/daftar">Pendaftaran</a></li>
-                <li><a class="{{ $active === 'kontak' ? 'active' : '' }}" href="/kontak">Kontak</a></li>
+                <li><a class="{{ Request::is('berita*') ? 'active' : '' }}" href="/berita">Berita</a></li>
+                <li><a class="{{ Request::is('daftar*') ? 'active' : '' }}" href="/daftar">Pendaftaran</a></li>
+                <li><a class="{{ Request::is('kontak*') ? 'active' : '' }}" href="/kontak">Kontak</a></li>
                 @auth
                     <li class="dropdown">
                         <a href="#"><span>Welcome back,

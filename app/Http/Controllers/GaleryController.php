@@ -100,7 +100,7 @@ class GaleryController extends Controller
         }
 
         if ($request->photo != '' && $request->photo != null) {
-            $rules['photo'] = 'required|min:5|max:255';
+            $rules['photo'] = 'required|file|mimes:jpeg,png,jpg,gif,svg';
         }
 
         $validatedData = $request->validate($rules);

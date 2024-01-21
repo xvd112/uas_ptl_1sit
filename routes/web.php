@@ -34,19 +34,19 @@ Route::get('/daftar', [LandingController::class, 'daftar']);
 Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar');
 
 // Fasilitas - Bedah
-Route::get('/bedah', function () {
-    return view('landing.fasilitas.bedah', ['active' => '']);
-});
+//  Route::get('/bedah', function () {
+//     return view('landing.fasilitas.bedah', ['active' => '']);
+// });
 
 // Fasilitas - Endoskopi
-Route::get('/endoskopi', function () {
-    return view('landing.fasilitas.endoskopi', ['active' => '']);
-});
+// Route::get('/endoskopi', function () {
+//     return view('landing.fasilitas.endoskopi', ['active' => '']);
+// });
 
 // Fasilitas - Radiology
-Route::get('/radiology', function () {
-    return view('landing.fasilitas.radiology', ['active' => '']);
-});
+// Route::get('/radiology', function () {
+//     return view('landing.fasilitas.radiology', ['active' => '']);
+// });
 /* End Landing */
 
 /* Auth */
@@ -102,12 +102,14 @@ Route::post('/dashboard/fasilitas', [FasilitasController::class, 'store'])->name
 Route::get('/dashboard/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
 Route::put('/dashboard/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
 Route::delete('/dashboard/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
-Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'view'])->name('fasilitas.view');
+Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.view');
 
 Route::get('/tentang', [TentangController::class, 'index']);
 Route::get('/tentang/create', [TentangController::class, 'tentang.visimisi']);
 
-
-
+// landing page fasilitas//
+Route::get('/bedah', [LandingController::class, 'bedah']);
+Route::get('/endoskopi', [LandingController::class, 'endoskopi']);
+Route::get('/radiology', [LandingController::class, 'radiology']);
 
 

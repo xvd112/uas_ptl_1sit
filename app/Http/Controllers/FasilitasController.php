@@ -12,8 +12,11 @@ class FasilitasController extends Controller
      */
     public function index()
     {
-        $fasilitas = Fasilitas::all();
-        return view('dashboard.fasilitas.index', compact('fasilitas'));
+        return view('dashboard.fasilitas.index', [
+            'page' => 'Fasilitas',
+            'url' => 'fasilitas',
+            'data' => Fasilitas::all()
+        ]);
     }
 
     /**
@@ -21,7 +24,12 @@ class FasilitasController extends Controller
      */
     public function create()
     {
-        return view('dashboard.fasilitas.create');
+        return view('dashboard.fasilitas.create', [
+            'page' => 'Fasilitas',
+            'url' => 'fasilitas',
+            'subtitle' => 'Insert',
+            'data' => Fasilitas::all()
+        ]);    
     }
 
     /**
@@ -38,7 +46,7 @@ class FasilitasController extends Controller
 
         Fasilitas::create($request->all());
 
-        return redirect('/fasilitas')->with('success', 'Data fasilitas berhasil ditambahkan!');
+        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil ditambahkan!');
     }
 
     /**
@@ -49,8 +57,12 @@ class FasilitasController extends Controller
      */
     public function show(string $id)
     {
-        $fasilitas = Fasilitas::findOrFail($id);
-        return view('dashboard.fasilitas.show', compact('fasilitas'));
+        return view('dashboard.fasilitas.view', [
+            'page' => 'Fasilitas',
+            'url' => 'fasilitas',
+            'subtitle' => 'View',
+            'data' => Fasilitas::find($id)
+        ]);
     }
 
     /**
@@ -61,8 +73,12 @@ class FasilitasController extends Controller
      */
     public function edit(string $id)
     {
-        $fasilitas = Fasilitas::find($id);
-        return view('dashboard.fasilitas.edit', compact('fasilitas'));
+        return view('dashboard.fasilitas.edit', [
+            'page' => 'Fasilitas',
+            'url' => 'fasilitas',
+            'subtitle' => 'Update',
+            'data' => Fasilitas::find($id)
+        ]);
     }
 
     /**
@@ -84,7 +100,7 @@ class FasilitasController extends Controller
         $fasilitas = Fasilitas::find($id);
         $fasilitas->update($request->all());
 
-        return redirect('/fasilitas')->with('success', 'Data fasilitas berhasil diperbarui!');
+        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil diperbarui!');
     }
 
     /**
@@ -97,17 +113,6 @@ class FasilitasController extends Controller
     {
         $fasilitas = Fasilitas::find($id);
         $fasilitas->delete();
-        return redirect('/fasilitas')->with('success', 'Data fasilitas berhasil dihapus!');
-    }
-
-    public function view($id)
-    {
-        // Ambil data fasilitas berdasarkan ID
-        $fasilitas = Fasilitas::find($id);
-        if (!$fasilitas) {
-            abort(404); // Atau berikan respons atau tindakan yang sesuai jika data tidak ditemukan
-        }
-        // Tampilkan view detail fasilitas
-        return view('dashboard.fasilitas.view', compact('fasilitas'));
+        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil dihapus!');
     }
 }

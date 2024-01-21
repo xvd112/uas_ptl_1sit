@@ -21,19 +21,19 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-9">
-                        <h4>View Fasilitas: {{ $fasilitas->nm_fasilitas }}</h4>
+                        <h4>View Fasilitas: {{ $data->nm_fasilitas }}</h4>
                     </div>
 
                     <div class="col-md-3">
-                        <form action="{{ route('fasilitas.destroy', $fasilitas->id) }}" method="POST" style="display: inline-block">
+                    <form class="d-inline" action="{{ url(Request::url() . '/' . $data->id) }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('Are you sure to delete this data?')"
-                                class="btn btn-danger btn-sm float-end">
-                                <i class="fa-solid fa-trash"></i> Delete
+                            <button onclick="return confirm('Are you sure to delete this data?')"
+                                class="btn btn-danger btn-sm btn-logout btn-right"><i
+                                    class="fa-solid fa-trash"></i></button>
                             </button>
                         </form>
-                        <a class="btn btn-warning btn-sm float-end mx-2" href="{{ route('fasilitas.edit', $fasilitas->id) }}"
+                        <a class="btn btn-warning btn-sm float-end mx-2" href="{{ route('fasilitas.edit', $data->id) }}"
                             role="button">Edit</a>
                     </div>
                 </div>
@@ -45,28 +45,28 @@
                             <div class="mb-3 row">
                                 <label for="nm_fasilitas" class="col-sm-2">Nama Fasilitas</label>
                                 <div class="col-sm-10">
-                                    : {{ $fasilitas->nm_fasilitas }}
+                                    : {{ $data->nm_fasilitas }}
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="deskripsi" class="col-sm-2">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    : {{ $fasilitas->deskripsi }}
+                                    :  {{ Str::of($data->deskripsi)->toHtmlString() }}
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="nm_dokter" class="col-sm-2">Nama Dokter</label>
                                 <div class="col-sm-10">
-                                    : {{ $fasilitas->nm_dokter }}
+                                    : {{ $data->nm_dokter }}
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="s_dokter" class="col-sm-2">Spesialis Dokter</label>
                                 <div class="col-sm-10">
-                                    : {{ $fasilitas->s_dokter }}
+                                    : {{ $data->s_dokter }}
                                 </div>
                             </div>
                         </div>

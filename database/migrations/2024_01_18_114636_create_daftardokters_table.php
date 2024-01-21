@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->text('kd_dok');
             $table->string('nama');
+            $table->string('tempat');
+            $table->date('tgl_lahir');
+            $table->string('alamat');
             $table->string('department');
             $table->string('specialty');
+            $table->string('photo');
             $table->timestamps();
         });
     }

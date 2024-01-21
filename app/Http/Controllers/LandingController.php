@@ -28,4 +28,19 @@ class LandingController extends Controller
     {
         return view('landing.daftar.daftar');
     }
+
+    public function bedah()
+    {
+        return view('landing.fasilitas.bedah');
+    }
+
+    public function endoskopi()
+    {
+        return view('landing.fasilitas.endoskopi');
+    }
+
+    public function radiology()
+    {
+        return view('landing.fasilitas.radiology');
+    }
 }

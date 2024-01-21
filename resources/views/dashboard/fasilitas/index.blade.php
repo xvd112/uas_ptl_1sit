@@ -20,17 +20,17 @@
             </div>
             {{-- Lokasi button tambah --}}
             <div class="col-3">
-                <div class="d-grid">
-                    <a class="btn btn-outline-primary btn-sm text-white" href="{{ route('fasilitas.create') }}" role="button" style="background-color: blue;">Tambah</a>
-                </div>
+                        <a class="btn btn-primary btn-sm btn-right" href="{{ url(Request::url() . '/create') }}"
+                            role="button">Tambah</a>
             </div>
             {{-- End button --}}
         </div>
     </div>
     <div class="card-body">
         <table class="table">
-            <thead class="bg-dark text-white">
+            <thead class="table-dark">
                 <tr>
+                    <th scope="col">No</th>
                     <th scope="col">Nama Fasilitas</th>
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Status Dokter</th>
@@ -39,18 +39,21 @@
             </thead>
             <tbody>
                 {{-- Tampilkan data --}}
-                @forelse($fasilitas as $fasilitas)
+                @forelse($data as $key => $d)
                     <tr>
-                        <td>{{ $fasilitas->nm_fasilitas }}</td>
-                        <td>{{ $fasilitas->nm_dokter }}</td>
-                        <td>{{ $fasilitas->s_dokter }}</td>
+                        <th id="no">{{ $key + 1 }}</th>
+                        <td>{{ $d->nm_fasilitas }}</td>
+                        <td>{{ $d->nm_dokter }}</td>
+                        <td>{{ $d->s_dokter }}</td>
                         <td class="text-center">
-                            <form action="{{ route('fasilitas.destroy', $fasilitas->id) }}" method="post" style="display: inline-block">
-                                <a href="{{ route('fasilitas.edit', $fasilitas->id) }}" class="btn btn-outline-success btn-sm"><i class="fas fa-edit text-success fa-lg"></i>Edit</a>
-                                <a href="{{ route('fasilitas.view', $fasilitas->id) }}" class="btn btn-outline-info btn-sm"><i class="fas fa-eye text-info fa-lg"></i>Lihat</a>
+                            <a href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"><i class="fa-solid fa-pen"></i></a>
+                            <a href="{{ url(Request::url() . '/' . $d->id) }}"><i class="fa-solid fa-eye"></i></a>
+                            <form class="d-inline" action="{{ url(Request::url() . '/' . $d->id) }}" method="POST">
+                                @method('delete')
                                 @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus Data fasilitas ini?')"><i class="fas fa-trash text-danger fa-lg"></i>Hapus</button>
+                                <button onclick="return confirm('Are you sure to delete this data?')" class="btn-logout">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

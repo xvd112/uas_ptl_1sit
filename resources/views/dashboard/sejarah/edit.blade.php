@@ -1,63 +1,81 @@
 @extends('dashboard.layout.index')
 
 @section('content')
-<div class="card mt-5">
-    <div class="card-header">
-    <div class="row">
-    <div class="col-9">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-    <div class="alert-title"><h4>Pesan</h4></div>
-    Ada kesalahan input
-    <ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-    </ul>
-    </div>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
-    </div>
 
-    <div class="card mt-5">
-        <div class="card-header">
-        <div class="row">
-        <div class="col-9">
-        @if ($errors->any())
-        <div class="alert alert-danger">
-        <div class="alert-title"><h4>Pesan</h4></div>
-        Ada kesalahan input
-        <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-        </ul>
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        @endif
-        </div>
+    @endif
 
-        <div class="card border-0 shadow rounded">
+    @if (session()->has('warning'))
+        <div class="alert alertwarning alert-dismissible fade show alert-form" role="alert">
+            {{ session('warning') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <!-- Main row -->
+    <div class="container">
+        <div class="card">
             <div class="card-header">
-            <h3>Koreksi Data Sejarah</h3>
+                <div class="row">
+                    <div class="col-md-11">
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        <h4>Edit Sejarah</h4>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-            <form action="{{ route('sejarah.update', $sejarah->id) }}"
-            method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-            <label for="sejarah"> Sejarah </label>
-            <textarea type="text" name="sejarah" id="sejarah" rows="10"
-            class="form-control"> {{ $sejarah->sejarah }}</textarea>
-
-           
-
+                <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @method('put')
+                    @csrf
+                  
+                    
+                    <div class="mb-3 row">
+                        <label for="sejarah" class="col-sm-2 col-form-label">Sejarah</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control @error('sejarah') is-invalid @enderror" id="summernote" name="sejarah"
+                                placeholder="Sejarah">{{ $data->sejarah, old('sejarah') }}</textarea>
+                            @error('sejarah')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row" style="float: right">
+                        <div class="col">
+                            <button class="btn btn-warning" type="reset">Reset</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            </form>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            
-        @endsection
+        </div>
+    </div>
+    <!-- /.row (main row) -->
+@endsection

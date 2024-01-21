@@ -21,7 +21,7 @@ Ada kesalahan input
 <h3>Koreksi Data Fasilitas</h3>
 </div>
 <div class="card-body">
-<form action="{{ route('fasilitas.update', $fasilitas->id) }}"
+<form action="{{ route('fasilitas.update', $data->id) }}"
 method="POST" enctype="multipart/form-data">
 @csrf
 @method('PUT')
@@ -30,10 +30,18 @@ method="POST" enctype="multipart/form-data">
 <input type="text" name="nm_fasilitas" id="nm_fasilitas" class="form-control"
 maxlength="255">
 </div>
-<div class="form-group">
-<label for="deskripsi">Deskripsi </label>
-<input type="text" name="deskripsi" id="deskripsi" class="formcontrol">
-</div>
+<div class="mb-3 row">
+                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="summernote" name="deskripsi"
+                                placeholder="Deskripsi">{{ $data->deskripsi, old('deskripsi') }}</textarea>
+                            @error('deskripsi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 <div class="form-group">
 <label for="nm_dokter">Nama Dokter </label>
 <input type="text" name="nm_dokter" id="nm_dokter" class="form-control">

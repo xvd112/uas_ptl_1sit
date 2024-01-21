@@ -35,19 +35,19 @@ Route::get('/daftar', [LandingController::class, 'daftar']);
 Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar');
 
 // Fasilitas - Bedah
-Route::get('/bedah', function () {
-    return view('landing.fasilitas.bedah', ['active' => '']);
-});
+//  Route::get('/bedah', function () {
+//     return view('landing.fasilitas.bedah', ['active' => '']);
+// });
 
 // Fasilitas - Endoskopi
-Route::get('/endoskopi', function () {
-    return view('landing.fasilitas.endoskopi', ['active' => '']);
-});
+// Route::get('/endoskopi', function () {
+//     return view('landing.fasilitas.endoskopi', ['active' => '']);
+// });
 
 // Fasilitas - Radiology
-Route::get('/radiology', function () {
-    return view('landing.fasilitas.radiology', ['active' => '']);
-});
+// Route::get('/radiology', function () {
+//     return view('landing.fasilitas.radiology', ['active' => '']);
+// });
 /* End Landing */
 
 /* Auth */
@@ -76,6 +76,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Modul Galery -> CRUD
     Route::resource('galeri', GaleryController::class);
 
+     // Modul Sejarah -> CRUD
+    Route::resource('sejarah', SejarahController::class);
+
+    // Modul VisiMisi -> CRUD
+    Route::resource('visimisi', VisiMisiController::class);
+
+    //    Modul VisiMisi -> CRUD
+    Route::resource('daftardokter', DaftarDokterController::class);
+
     // Modul Pendaftaran -> CRUD
     Route::resource('daftar', DaftarController::class);
 
@@ -92,32 +101,14 @@ Route::post('/dashboard/fasilitas', [FasilitasController::class, 'store'])->name
 Route::get('/dashboard/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
 Route::put('/dashboard/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
 Route::delete('/dashboard/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
-Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'view'])->name('fasilitas.view');
+Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.view');
 
 Route::get('/tentang', [TentangController::class, 'index']);
 Route::get('/tentang/create', [TentangController::class, 'tentang.visimisi']);
 
-//-- Kelola Tabel sejarah
-Route::get('/sejarah', [SejarahController::class, 'index']);
-Route::get('/sejarah/create', [SejarahController::class, 'create'])->name('sejarah.create');
-Route::post('/sejarah', [SejarahController::class, 'store'])->name('sejarah.store');
-Route::get('/sejarah/{id}/edit', [SejarahController::class, 'edit'])->name('sejarah.edit');
-Route::put('/sejarah/{id}', [SejarahController::class, 'update'])->name('sejarah.update');
-Route::delete('/sejarah/{id}', [SejarahController::class, 'destroy'])->name('sejarah.destroy');
+// landing page fasilitas//
+Route::get('/bedah', [LandingController::class, 'bedah']);
+Route::get('/endoskopi', [LandingController::class, 'endoskopi']);
+Route::get('/radiology', [LandingController::class, 'radiology']);
 
-//-- Kelola Tabel daftardokter
-Route::get('/daftardokter', [DaftarDokterController::class, 'index']);
-Route::get('/daftardokter/create', [DaftarDokterController::class, 'create'])->name('daftardokter.create');
-Route::post('/daftardokter', [DaftarDokterController::class, 'store'])->name('daftardokter.store');
-Route::get('/daftardokter/{id}/edit', [DaftarDokterController::class, 'edit'])->name('daftardokter.edit');
-Route::put('/daftardokter/{id}', [DaftarDokterController::class, 'update'])->name('daftardokter.update');
-Route::delete('/daftardokter/{id}', [DaftarDokterController::class, 'destroy'])->name('daftardokter.destroy');
 
-//-- Kelola Tabel visimisi
-
-Route::get('/visimisi', [VisiMisiController::class, 'index']);
-Route::get('/visimisi/create', [VisiMisiController::class, 'create'])->name('visimisi.create');
-Route::post('/visimisi', [VisiMisiController::class, 'store'])->name('visimisi.store');
-Route::get('/visimisi/{id}/edit', [VisiMisiController::class, 'edit'])->name('visimisi.edit');
-Route::put('/visimisi/{id}', [VisiMisiController::class, 'update'])->name('visimisi.update');
-Route::delete('/visimisi/{id}', [VisiMisiController::class, 'destroy'])->name('visimisi.destroy');

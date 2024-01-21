@@ -12,8 +12,11 @@ class daftardokter extends Model
     protected $fillable = [
         'kd_dok',
         'nama',
+        'tempat',
+        'tgl_lahir',
+        'alamat',
         'department',
         'specialty',
-        
+        'photo',
     ];
 }

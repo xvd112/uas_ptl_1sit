@@ -14,11 +14,10 @@ class SejarahController extends Controller
      */
     public function index()
     {
-        $sejarahs = sejarah::all();
-        // panggil file index.blade.php di folder dashboard.kelompok
-        return view('dashboard.sejarah.sejarah', compact('sejarahs'), [
-            'active' => 'info',
-
+        return view('dashboard.sejarah.index', [
+            'page' => 'sejarah',
+            'url' => 'sejarah',
+            'data' => sejarah::all()
         ]);
     }
 
@@ -27,10 +26,7 @@ class SejarahController extends Controller
      */
     public function create()
     {
-        return view('dashboard.sejarah.create
-        ', [
-            'active' => 'info',
-        ]);
+        //
     }
 
     /**
@@ -38,12 +34,7 @@ class SejarahController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'sejarah' => 'required',
-        ]);
-        sejarah::create($request->all());
-        return redirect('/sejarah')->with('success', 'Data sejarah berhasil 
-        ditambahkan!');
+        //
     }
 
     /**
@@ -54,8 +45,12 @@ class SejarahController extends Controller
      */
     public function show(string $id)
     {
-        $sejarah = sejarah::findOrFail($id);
-        return view('sejarah.show', compact('sejarah'));
+        return view('dashboard.sejarah.view', [
+            'page' => 'sejarah',
+            'url' => 'sejarah',
+            'subtitle' => 'View',
+            'data' => sejarah::find($id)
+        ]);
     }
 
     /**
@@ -66,10 +61,11 @@ class SejarahController extends Controller
      */
     public function edit(string $id)
     {
-        $sejarah = sejarah::find($id);
-        return view('dashboard.sejarah.edit', compact('sejarah'), [
-            'active' => 'info',
-
+        return view('dashboard.sejarah.edit', [
+            'page' => 'sejarah',
+            'url' => 'sejarah',
+            'subtitle' => 'Update',
+            'data' => sejarah::find($id)
         ]);
     }
 
@@ -87,13 +83,21 @@ class SejarahController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'sejarah' => 'required',
-        ]);
-        $sejarah = sejarah::find($id);
-        $sejarah->update($request->all());
-        return redirect('/sejarah')->with('success', 'Data sejarah berhasil 
-            diperbarui!');
+        $rules = [
+            
+            'sejarah' => 'required'
+        ];
+
+        $data = sejarah::find($id);
+
+
+        $validatedData = $request->validate($rules);
+
+        
+
+        sejarah::where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/sejarah')->with('success', 'Sukses mengedit data');
     }
 
     /**
@@ -104,9 +108,7 @@ class SejarahController extends Controller
      */
     public function destroy(string $id)
     {
-        $sejarah = sejarah::find($id);
-        $sejarah->delete();
-        return redirect('/sejarah')->with('success', 'Data Sejarah berhasil 
-        dihapus!');
+       sejarah::destroy($id);
+        return redirect('/dashboard/sejarah')->with('success', 'Sukses menghapus data');
     }
 }

@@ -14,11 +14,10 @@ class VisiMisiController extends Controller
      */
     public function index()
     {
-        $visimisis = visimisi::all();
-        // panggil file index.blade.php di folder dashboard.kelompok
-        return view('dashboard.visimisi.visimisi', compact('visimisis'), [
-            'active' => 'info',
-
+        return view('dashboard.visimisi.index', [
+            'page' => 'visimisi',
+            'url' => 'visimisi',
+            'data' => visimisi::all()
         ]);
     }
 
@@ -27,10 +26,7 @@ class VisiMisiController extends Controller
      */
     public function create()
     {
-        return view('dashboard.visimisi.create
-        ', [
-            'active' => 'info',
-        ]);
+        //
     }
 
     /**
@@ -38,13 +34,7 @@ class VisiMisiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'visi' => 'required',
-            'misi' => 'required',
-        ]);
-        visimisi::create($request->all());
-        return redirect('/visimisi')->with('success', 'Data VisiMisi berhasil 
-        ditambahkan!');
+       //
     }
 
     /**
@@ -52,8 +42,12 @@ class VisiMisiController extends Controller
      */
     public function show(string $id)
     {
-        $vsisimisi = visimisi::findOrFail($id);
-        return view('visimisi.show', compact('visimisi'));
+        return view('dashboard.visimisi.view', [
+            'page' => 'visimisi',
+            'url' => 'visimisi',
+            'subtitle' => 'View',
+            'data' => visimisi::find($id)
+        ]);
     }
 
     /**
@@ -61,10 +55,11 @@ class VisiMisiController extends Controller
      */
     public function edit(string $id)
     {
-        $visimisi = visimisi::find($id);
-        return view('dashboard.visimisi.edit', compact('visimisi'), [
-            'active' => 'info',
-
+        return view('dashboard.visimisi.edit', [
+            'page' => 'visimisi',
+            'url' => 'visimisi',
+            'subtitle' => 'Update',
+            'data' => visimisi::find($id)
         ]);
     }
 
@@ -73,14 +68,22 @@ class VisiMisiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+        $rules = [
+            
             'visi' => 'required',
-            'misi' => 'required',
-        ]);
-        $visimisi = visimisi::find($id);
-        $visimisi->update($request->all());
-        return redirect('/visimisi')->with('success', 'Data VisiMisi berhasil 
-            diperbarui!');
+            'misi' => 'required'
+        ];
+
+        $data = visimisi::find($id);
+
+
+        $validatedData = $request->validate($rules);
+
+        
+
+        visimisi::where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/visimisi')->with('success', 'Sukses mengedit data');
     }
 
     /**
@@ -88,9 +91,6 @@ class VisiMisiController extends Controller
      */
     public function destroy(string $id)
     {
-        $visimisi = visimisi::find($id);
-        $visimisi->delete();
-        return redirect('/visimisi')->with('success', 'Data VisiMisi berhasil 
-        dihapus!');
+        //
     }
 }

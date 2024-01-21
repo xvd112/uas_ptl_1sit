@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="{{ asset('asset_dashboard/plugins/summernote/summernote-bs4.min.css') }}">
 
     {{-- Favicon --}}
-    <link href="{{ asset('asset/img/logo.png') }}" rel="icon">
-    <link href="{{ asset('asset/img/logo.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('asset/img/icon.png') }}" rel="icon">
+    <link href="{{ asset('asset/img/icon.png') }}" rel="apple-touch-icon">
 
     {{-- Font Awesome 6.5.1 --}}
     <link

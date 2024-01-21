@@ -49,7 +49,13 @@
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-2">Email</label>
                     <div class="col-sm-10">
-                        : {{ $data->email }}
+                        : <a href="mailto:{{ $data->email }}">{{ $data->email }}</a>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2">isAdmin</label>
+                    <div class="col-sm-10">
+                        : {{ $data->isAdmin == 1 ? 'Yes' : 'No' }}
                     </div>
                 </div>
                 <div class="mb-3 row">

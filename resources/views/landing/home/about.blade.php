@@ -9,11 +9,19 @@
         <div class="row gy-4">
             <div class="col-lg-6">
                 <h3>Sejarah</h3>
-                hkjhhk
+                <p style="text-align: justify">
+                    {{ substr($sejarah->sejarah, 0, 260) }}
+                    <a href="/sejarah" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
             </div>
             <div class="col-lg-6">
-                <h3>Visi & Misi</h3>
-                hkjhhk
+                <h3>Visi</h3>
+                <p style="text-align: justify">
+                    {{ $visimisi->visi }}
+                </p>
+                <h3>Misi</h3>
+                <p style="text-align: justify">
+                    {{ $visimisi->misi }}
+                </p>
             </div>
         </div>
 

@@ -101,6 +101,7 @@ div .btn-sign-up:hover {
 
 .poto {
     height: 300px;
+    width: 200px;
     object-fit: cover;
 }
 

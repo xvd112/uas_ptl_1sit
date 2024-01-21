@@ -7,41 +7,21 @@
         </div>
 
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item  position-relative">
-                    <div class="icon">
-                        <i class="fa-solid fa-scalpel-line-dashed"></i>
+            @php $i=0; @endphp
+            @foreach ($fasi as $f)
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item  position-relative" style="text-align: justify">
+                        <div class="icon">
+                            {{ Str::of($iconfasi[$i])->toHtmlString() }}
+                        </div>
+                        <h3>{{ $f->nm_fasilitas }}</h3>
+                        <p>{{ substr($f->deskripsi, 0, 260) }}</p>
+                        <a href="{{ '/' . Str::lcfirst($f->nm_fasilitas) }}" class="readmore stretched-link">Read more
+                            <i class="bi bi-arrow-right"></i></a>
                     </div>
-                    <h3>Bedah</h3>
-                    <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores
-                        iure perferendis tempore et consequatur.</p>
-                    <a href="/bedah" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="fa-solid fa-microscope"></i>
-                    </div>
-                    <h3>Endoskopi</h3>
-                    <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum
-                        hic non ut nesciunt dolorem.</p>
-                    <a href="/endoskopi" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="fa-regular fa-x-ray"></i>
-                    </div>
-                    <h3>Radiology</h3>
-                    <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                        voluptas adipisci eos earum corrupti.</p>
-                    <a href="/radiology" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div><!-- End Service Item -->
+                </div><!-- End Service Item -->
+                @php count($iconfasi) >= $i ? $i++ : ($i = 0) @endphp
+            @endforeach
         </div>
     </div>
 </section><!-- End Our Services Section -->

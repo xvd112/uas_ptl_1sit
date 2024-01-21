@@ -9,11 +9,11 @@
 
         <div class="row gy-4 justify-content-center">
             @foreach ($team as $d)
-                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="member">
                         <img src="{{ asset('asset/img/' . $d->photo) }}" class="img-fluid poto" alt="">
                         <h4>{{ $d->title }}</h4>
-                        <span>{{ $d->desc }}</span>
+                        <span>{{ Str::of(str_replace(['<br>', '<p>', '</p>'], '', $d->desc))->toHtmlString() }}</span>
                         {{-- <div class="social">
                             <a href=""><i class="bi bi-twitter"></i></a>
                             <a href=""><i class="bi bi-facebook"></i></a>

@@ -45,6 +45,7 @@ class UserController extends Controller
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['isAdmin'] = $request->isAdmin == 'on' ? true : false;
 
         User::create($validatedData);
 
@@ -99,6 +100,8 @@ class UserController extends Controller
         if (key_exists('password', $validatedData)) {
             $validatedData['password'] = bcrypt($validatedData['password']);
         }
+
+        $validatedData['isAdmin'] = $request->isAdmin == 'on' ? true : false;
 
         User::where('id', $id)->update($validatedData);
 

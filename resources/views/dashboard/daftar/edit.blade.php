@@ -66,12 +66,22 @@
                     <div class="mb-3 row">
                         <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                         <div class="col-sm-10">
-                            <input type="radio" name="jk" id="jk" value="Laki-Laki"
-                                {{ $data->jk == 'Laki-Laki' || old('jk') == 'Laki-Laki' ? 'checked' : '' }} checked>
-                            Laki-Laki
-                            <input type="radio" name="jk" id="jk" value="Perempuan"
-                                {{ $data->jk == 'Perempuan' || old('jk') == 'Perempuan' ? 'checked' : '' }}>
-                            Perempuan
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="jk" id="jk"
+                                    value="Laki - Laki"
+                                    {{ $data->jk == 'Laki-Laki' || old('jk') == 'Laki-Laki' ? 'checked' : '' }} checked>
+                                <label class="form-check-label" for="jk">
+                                    Laki - Laki
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="jk" id="jk"
+                                    value="Perempuan"
+                                    {{ $data->jk == 'Perempuan' || old('jk') == 'Perempuan' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="jk">
+                                    Perempuan
+                                </label>
+                            </div>
                             @error('jk')
                                 <div class="invalid-feedback">
                                     {{ $message }}

@@ -2,15 +2,15 @@
 
 @section('content')
 
-@section('boxstat')
-    @include('dashboard.layout.boxstat')
+@section('statview')
+    @include('dashboard.beranda.statview')
 @show
 
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-7 connectedSortable">
-        @section('sales')
+        {{-- @section('sales')
             @include('dashboard.layout.sales')
         @show
 
@@ -20,13 +20,13 @@
 
         @section('todo')
             @include('dashboard.layout.todo')
-        @show
+        @show --}}
     </section>
     <!-- /.Left col -->
     <!-- right col (We are only adding the ID to make the widgets sortable)-->
     <section class="col-lg-5 connectedSortable">
 
-        @section('map')
+        {{-- @section('map')
             @include('dashboard.layout.map')
         @show
 
@@ -36,7 +36,7 @@
 
         @section('calendar')
             @include('dashboard.layout.calendar')
-        @show
+        @show --}}
     </section>
     <!-- right col -->
 </div>

@@ -89,6 +89,21 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="isAdmin" class="col-sm-2 col-form-label">isAdmin</label>
+                        <div class="col-sm-10">
+                            <div class="form-check form-switch form-control" style="border: none;">
+                                <input style="height: 20px; width: 40px"
+                                    class="form-check-input @error('isAdmin') is-invalid @enderror" type="checkbox"
+                                    name="isAdmin" id="isAdmin" {{ old('isAdmin') ? 'checked' : '' }}>
+                            </div>
+                            @error('isAdmin')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="mb-3 row" style="float: right">
                         <div class="col">
                             <button class="btn btn-warning" type="reset">Reset</button>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DaftarDokterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\UserController;
@@ -67,9 +68,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 /* Dashboard */
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Beranda
-    Route::get('/', function () {
-        return view('dashboard.dashboard', ['page' => '']);
-    });
+    Route::get('/', [DashboardController::class, 'index']);
 
     // Modul User -> CRUD
     Route::resource('user', UserController::class);

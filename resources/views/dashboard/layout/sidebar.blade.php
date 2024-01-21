@@ -115,16 +115,6 @@
                         </li>
                     </ul>
                 </li>
-                @can('admin')
-                    <li class="nav-item">
-                        <a href="/dashboard/user" class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}">
-                            <i class="nav-icon fa-solid fa-users"></i>
-                            <p>
-                                Users
-                            </p>
-                        </a>
-                    </li>
-                @endcan
                 <li class="nav-item">
                     <a href="/dashboard/galeri"
                         class="nav-link {{ Request::is('dashboard/galeri*') ? 'active' : '' }}">
@@ -134,6 +124,17 @@
                         </p>
                     </a>
                 </li>
+                @can('admin')
+                    <li class="nav-header">SUPER ADMIN ONLY</li>
+                    <li class="nav-item">
+                        <a href="/dashboard/user" class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}">
+                            <i class="nav-icon fa-solid fa-users"></i>
+                            <p>
+                                Users
+                            </p>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

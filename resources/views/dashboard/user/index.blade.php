@@ -31,12 +31,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-bordered">
+                <table id="example1" class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">isAdmin</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -49,6 +50,7 @@
                                 <th id="no">{{ $no }}</th>
                                 <td>{{ $d->name }}</td>
                                 <td>{{ $d->email }}</td>
+                                <td id="no">{{ $d->isAdmin == 1 ? 'Yes' : 'No' }}</td>
                                 <td id="no">
                                     <a href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"><i
                                             class="fa-solid fa-pen"></i></a>

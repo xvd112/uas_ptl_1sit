@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-bordered">
+                <table id="example1" class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">No</th>

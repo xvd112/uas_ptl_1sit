@@ -12,11 +12,10 @@ class DaftarDokterController extends Controller
      */
     public function index()
     {
-        $daftardokters = daftardokter::all();
-        // panggil file index.blade.php di folder dashboard.kelompok
-        return view('dashboard.daftardokter.daftardokter', compact('daftardokters'), [
-            'active' => 'dokter',
-
+        return view('dashboard.daftardokter.index', [
+            'page' => 'daftardokter',
+            'url' => 'daftardokter',
+            'data' => daftardokter::all()
         ]);
     }
 
@@ -25,9 +24,11 @@ class DaftarDokterController extends Controller
      */
     public function create()
     {
-        return view('dashboard.daftardokter.create
-        ', [
-            'active' => 'dokter',
+        return view('dashboard.daftardokter.form', [
+            'page' => 'daftardokter',
+            'url' => 'daftardokter',
+            'subtitle' => 'Insert',
+            'data' => daftardokter::all()
         ]);
     }
 
@@ -36,16 +37,29 @@ class DaftarDokterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'kd_dok' => 'required',
-            'nama' => 'required',
-            'department' => 'required',
-            'specialty' => 'required',
-
+        $validatedData = $request->validate([
+            'kd_dok' => 'required|max:255|unique:daftardokters',
+            'nama' => 'required|max:255',
+            'tempat' => 'required|max:255',
+            'tgl_lahir' => 'required|date',
+            'alamat' => 'required|max:255',
+            'department' => 'required|max:255',
+            'specialty' => 'required|max:255',
+            'photo' => 'required|file|mimes:jpeg,png,jpg,gif,svg',
+            
         ]);
-        daftardokter::create($request->all());
-        return redirect('/daftardokter')->with('success', 'Data Dokter berhasil 
-        ditambahkan!');
+
+        if (key_exists('photo', $validatedData)) {
+            $image = $request->file('photo');
+            $destinationPath = 'asset/img/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $validatedData['photo'] = $profileImage;
+        }
+
+       daftardokter::create($validatedData);
+
+        return redirect('/dashboard/daftardokter')->with('success', 'Sukses menginputkan data');
     }
 
 
@@ -56,8 +70,12 @@ class DaftarDokterController extends Controller
      */
     public function show(string $id)
     {
-        $daftardokter = daftardokter::findOrFail($id);
-        return view('daftardokter.show', compact('daftardokter'));
+        return view('dashboard.daftardokter.view', [
+            'page' => 'daftardokter',
+            'url' => 'daftardokter',
+            'subtitle' => 'View',
+            'data' => daftardokter::find($id)
+        ]);
     }
 
     /**
@@ -65,10 +83,11 @@ class DaftarDokterController extends Controller
      */
     public function edit(string $id)
     {
-        $daftardokter = daftardokter::find($id);
-        return view('dashboard.daftardokter.edit', compact('daftardokter'), [
-            'active' => 'dokter',
-
+        return view('dashboard.daftardokter.edit', [
+            'page' => 'daftardokter',
+            'url' => 'daftardokter',
+            'subtitle' => 'Update',
+            'data' => daftardokter::find($id)
         ]);
     }
 
@@ -77,16 +96,38 @@ class DaftarDokterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'kd_dok' => 'required',
-            'nama' => 'required',
-            'department' => 'required',
-            'specialty' => 'required',
-        ]);
-        $daftardokter = daftardokter::find($id);
-        $daftardokter->update($request->all());
-        return redirect('/daftardokter')->with('success', 'Data Dokter berhasil 
-            diperbarui!');
+        $rules = [
+            'nama' => 'required|max:255',
+            'tempat' => 'required|max:255',
+            'tgl_lahir' => 'required',
+            'alamat' => 'required|max:255',
+            'department' => 'required|max:255',
+            'specialty' => 'required|max:255'
+        ];
+
+        $data = daftardokter::find($id);
+
+        if ($request->title != $data->title) {
+            $rules['kd_dok'] = 'required|max:255|unique:daftardokters';
+        }
+
+        if ($request->photo != '' && $request->photo != null) {
+            $rules['photo'] = 'required|file|mimes:jpeg,png,jpg,gif,svg';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        if (key_exists('photo', $validatedData)) {
+            $image = $request->file('photo');
+            $destinationPath = 'asset/img/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $validatedData['photo'] = $profileImage;
+        }
+
+        daftardokter::where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/daftardokter')->with('success', 'Sukses mengedit data');
     }
 
     /**
@@ -94,9 +135,7 @@ class DaftarDokterController extends Controller
      */
     public function destroy(string $id)
     {
-        $daftardokter = daftardokter::find($id);
-        $daftardokter->delete();
-        return redirect('/daftardokter')->with('success', 'Data Dokter berhasil 
-        dihapus!');
+        daftardokter::destroy($id);
+        return redirect('/dashboard/daftardokter')->with('success', 'Sukses menghapus data');
     }
 }

@@ -1,73 +1,116 @@
 @extends('dashboard.layout.index')
 
 @section('content')
-<div class="card mt-5">
-    <div class="card-header">
-    <div class="row">
-    <div class="col-9">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-    <div class="alert-title"><h4>Pesan</h4></div>
-    Ada kesalahan input
-    <ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-    </ul>
-    </div>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
-    </div>
 
-    <div class="card mt-5">
-        <div class="card-header">
-        <div class="row">
-        <div class="col-9">
-        @if ($errors->any())
-        <div class="alert alert-danger">
-        <div class="alert-title"><h4>Pesan</h4></div>
-        Ada kesalahan input
-        <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-        </ul>
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        @endif
-        </div>
+    @endif
 
-        <div class="card border-0 shadow rounded">
+    @if (session()->has('warning'))
+        <div class="alert alertwarning alert-dismissible fade show alert-form" role="alert">
+            {{ session('warning') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <!-- Main row -->
+    <div class="container">
+        <div class="card">
             <div class="card-header">
-            <h3>Koreksi Data Dokter</h3>
+                <div class="row">
+                    <div class="col-md-11">
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        <h4>Edit Galery</h4>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-            <form action="{{ route('daftardokter.update', $daftardokter->id ) }}"
-            method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-            <label for="kd_dok">Kode Dokter </label>
-            <input type="text" name="kd_dok"  id="kd_dok" 
-            class="form-control" value="{{ $daftardokter->kd_dok }}">
-
-            <label for="nama">Nama </label>
-            <input type="text" name="nama"  id="nama" 
-            class="form-control" value="{{ $daftardokter->nama }}">
-
-             <label for="department">Department </label>
-            <input type="text" name="department"  id="department" 
-            class="form-control" value="{{ $daftardokter->department }}">
-
-            <label for="specialty">Specialty </label>
-            <input type="text" name="specialty"  id="specialty" 
-            class="form-control" value="{{ $daftardokter->specialty }}">
-
+                <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @method('put')
+                    @csrf
+                    <div class="mb-3 row">
+                        <label for="title" class="col-sm-2 col-form-label">Judul Gambar</label>
+                        <div class="col-sm-10">
+                            <input value="{{ $data->title, old('title') }}" type="text"
+                                class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                                placeholder="Judul Gambar">
+                            @error('title')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="category" class="col-sm-2 col-form-label">Category</label>
+                        <div class="col-sm-10">
+                            <input value="{{ $data->category, old('category') }}" type="text"
+                                class="form-control @error('category') is-invalid @enderror" id="category" name="category"
+                                placeholder="Category">
+                            @error('category')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="photo" class="col-sm-2 col-form-label">Photo Baru</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="photo" class="form-control">
+                            @error('photo')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="desc" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control @error('desc') is-invalid @enderror" id="summernote" name="desc"
+                                placeholder="Deskripsi">{{ $data->desc, old('desc') }}</textarea>
+                            @error('desc')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row" style="float: right">
+                        <div class="col">
+                            <button class="btn btn-warning" type="reset">Reset</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            </form>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            
-        @endsection
+        </div>
+    </div>
+    <!-- /.row (main row) -->
+@endsection

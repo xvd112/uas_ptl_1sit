@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/dokter" class="nav-link {{ Request::is('dashboard/dokter*') ? 'active' : '' }}">
+                    <a href="/dashboard/daftardokter" class="nav-link {{ Request::is('dashboard/dokter*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-user-doctor"></i>
                         <p>
                             Dokter
@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/visi"
+                            <a href="/dashboard/visimisi"
                                 class="nav-link {{ Request::is('dashboard/visi*') ? 'active' : '' }}">
                                 <i class="nav-icon fa-solid fa-bullseye"></i>
                                 <p>Visi & Misi</p>

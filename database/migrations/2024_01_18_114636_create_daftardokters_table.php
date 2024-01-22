@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tempat');
             $table->date('tgl_lahir');
             $table->string('alamat');
-            $table->string('department');
+            $table->string('bagian');
             $table->string('specialty');
             $table->string('photo');
             $table->timestamps();

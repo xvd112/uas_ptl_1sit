@@ -103,12 +103,11 @@ Route::put('/dashboard/fasilitas/{id}', [FasilitasController::class, 'update'])-
 Route::delete('/dashboard/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
 Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.view');
 
-Route::get('/tentang', [TentangController::class, 'index']);
-Route::get('/tentang/create', [TentangController::class, 'tentang.visimisi']);
-
 // landing page fasilitas//
 Route::get('/bedah', [LandingController::class, 'bedah']);
 Route::get('/endoskopi', [LandingController::class, 'endoskopi']);
 Route::get('/radiology', [LandingController::class, 'radiology']);
 
-
+Route::get('/sejarah', [LandingController::class, 'sejarah']);
+Route::get('/visimisi', [LandingController::class, 'visimisi']);
+Route::get('/dokter', [LandingController::class, 'dokter']);

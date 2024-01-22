@@ -50,7 +50,7 @@
                                 <th id="no">{{ $no }}</th>
                                 <td>{{ $d->nama }}</td>
                                 <td>{{ $d->specialty }}</td>
-                                <td class="d-flex justify-content-center"><img src="{{ asset('asset/img/' . $d->photo) }}"
+                                <td class="d-flex justify-content-center"><img src="{{ asset('assetdokter/' . $d->photo) }}"
                                         alt=""></td>
                                 <td id="no">
                                     <a href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"><i

@@ -40,43 +40,43 @@
             <div class="card-body">
                 <div class="row g-0">
                     <div class="col-md-3">
-                        <img src="{{ asset('asset/img/' . $data->photo) }}" height="350px" width="250px" alt="...">
+                        <img src="{{ asset('asset/dokter/' . $data->photo) }}" height="350px" width="250px" alt="...">
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="kd_dok" class="col-sm-2">Kode Dokter</label>
-                                <div class="col-sm-10">
+                                <label for="kd_dok" class="col-sm-3">Kode Dokter</label>
+                                <div class="col-sm-9">
                                     : {{ $data->kd_dok }}
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="nama" class="col-sm-2">Nama</label>
-                                <div class="col-sm-10">
+                                <label for="nama" class="col-sm-3">Nama</label>
+                                <div class="col-sm-9">
                                     : {{ $data->nama }}
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="tempat" class="col-sm-2">Tempat/Tgl Lahir</label>
-                                <div class="col-sm-10">
+                                <label for="tempat" class="col-sm-3">Tempat/Tgl Lahir</label>
+                                <div class="col-sm-9">
                                     : {{ Str::of($data->tempat)->toHtmlString() }}
                                 </div>
                             </div>
                                 <div class="mb-3 row">
-                                    <label for="alamat" class="col-sm-2">Alamat</label>
-                                    <div class="col-sm-10">
+                                    <label for="alamat" class="col-sm-3">Alamat</label>
+                                    <div class="col-sm-9">
                                         : {{ Str::of($data->alamat)->toHtmlString() }}
                                     </div>
                                 </div>
                                     <div class="mb-3 row">
-                                        <label for="department" class="col-sm-2">Department</label>
-                                        <div class="col-sm-10">
-                                            : {{ Str::of($data->department)->toHtmlString() }}
+                                        <label for="bagian" class="col-sm-3">Bagian</label>
+                                        <div class="col-sm-9">
+                                            : {{ Str::of($data->bagian)->toHtmlString() }}
                                         </div>
                                     </div>
                                         <div class="mb-3 row">
-                                            <label for="specialty" class="col-sm-2">Specialty</label>
-                                            <div class="col-sm-10">
+                                            <label for="specialty" class="col-sm-3">Specialty</label>
+                                            <div class="col-sm-9">
                                                 : {{ Str::of($data->specialty)->toHtmlString() }}
                                             </div>
                             </div>

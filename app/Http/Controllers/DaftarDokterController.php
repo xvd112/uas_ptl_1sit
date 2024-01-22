@@ -43,7 +43,7 @@ class DaftarDokterController extends Controller
             'tempat' => 'required|max:255',
             'tgl_lahir' => 'required|date',
             'alamat' => 'required|max:255',
-            'department' => 'required|max:255',
+            'bagian' => 'required|max:255',
             'specialty' => 'required|max:255',
             'photo' => 'required|file|mimes:jpeg,png,jpg,gif,svg',
             
@@ -51,7 +51,7 @@ class DaftarDokterController extends Controller
 
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
-            $destinationPath = 'asset/img/';
+            $destinationPath = 'asset/dokter/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
@@ -101,7 +101,7 @@ class DaftarDokterController extends Controller
             'tempat' => 'required|max:255',
             'tgl_lahir' => 'required',
             'alamat' => 'required|max:255',
-            'department' => 'required|max:255',
+            'bagian' => 'required|max:255',
             'specialty' => 'required|max:255'
         ];
 
@@ -119,7 +119,7 @@ class DaftarDokterController extends Controller
 
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
-            $destinationPath = 'asset/img/';
+            $destinationPath = 'asset/dokter/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;

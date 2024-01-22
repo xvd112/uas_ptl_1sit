@@ -87,8 +87,8 @@
                                 class="form-control @error('tempat') is-invalid @enderror" id="tempat" name="tempat"
                                 placeholder="Tempat Lahir">
                             </div>
-                                <div class="col-sm-3">
-                                <input value="{{ old('tgl_lahir') }}" type="date"
+                                <div class="col-sm-4">
+                                <input value="{{ date('Y-m-d'), old('tgl_book') }}" type="date"
                                 class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir"
                                 placeholder="Tempat Lahir">
                             @error('tgl_lahir')
@@ -113,12 +113,19 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="department" class="col-sm-2 col-form-label">Department</label>
+                        <label for="bagian" class="col-sm-2 col-form-label">Bagian</label>
                         <div class="col-sm-10">
-                            <input value="{{ old('department') }}" type="text"
-                                class="form-control @error('department') is-invalid @enderror" id="department" name="department"
-                                placeholder="Department">
-                            @error('department')
+                            <select name="bagian" class="form-control @error('layanan') is-invalid @enderror"
+                                id="bagian">
+                                <option value="Bedah" {{ old('bagian') == 'Bedah' ? 'selected' : '' }}
+                                    selected>
+                                    Bedah</option>
+                                <option value="Endoskopi" {{ old('bagian') == 'Endoskopi' ? 'selected' : '' }}>
+                                    Endoskopi</option>
+                                <option value="Radiologi" {{ old('bagian') == 'Radiologi' ? 'selected' : '' }}>
+                                    Radiology</option>
+                            </select>
+                            @error('bagian')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

@@ -15,7 +15,7 @@ class daftardokter extends Model
         'tempat',
         'tgl_lahir',
         'alamat',
-        'department',
+        'bagian',
         'specialty',
         'photo',
     ];

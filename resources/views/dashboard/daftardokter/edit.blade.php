@@ -44,7 +44,7 @@
                             </div>
                         @endif
 
-                        <h4>Edit Galery</h4>
+                        <h4>Edit Data Dokter</h4>
                     </div>
                 </div>
             </div>
@@ -54,12 +54,12 @@
                     @method('put')
                     @csrf
                     <div class="mb-3 row">
-                        <label for="title" class="col-sm-2 col-form-label">Judul Gambar</label>
+                        <label for="kd_dok" class="col-sm-2 col-form-label">Kode Dokter</label>
                         <div class="col-sm-10">
-                            <input value="{{ $data->title, old('title') }}" type="text"
-                                class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                                placeholder="Judul Gambar">
-                            @error('title')
+                            <input value="{{ $data->kd_dok, old('title') }}" type="text"
+                                class="form-control @error('kd_dok') is-invalid @enderror" id="kd_dok" name="kd_dok"
+                                placeholder="Kode Dokter">
+                            @error('kd_dok')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -67,12 +67,81 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="category" class="col-sm-2 col-form-label">Category</label>
+                        <label for="category" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input value="{{ $data->category, old('category') }}" type="text"
-                                class="form-control @error('category') is-invalid @enderror" id="category" name="category"
-                                placeholder="Category">
-                            @error('category')
+                            <input value="{{ $data->nama, old('category') }}" type="text"
+                                class="form-control @error('category') is-invalid @enderror" id="nama" name="nama"
+                                placeholder="Nama">
+                            @error('nama')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="category" class="col-sm-2 col-form-label">Tempat</label>
+                        <div class="col-sm-6">
+                            <input value="{{ $data->tempat, old('category') }}" type="text"
+                                class="form-control @error('category') is-invalid @enderror" id="tempat" name="tempat"
+                                placeholder="Tempat">
+                        </div>
+                        <div class="col-sm-4">
+                            <input value="{{ $data->tgl_lahir, old('tgl_lahir') }}" type="date"
+                            class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir"
+                            placeholder="Tanggal Lahir">
+                        @error('tgl_lahir')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                           
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="category" class="col-sm-2 col-form-label">Alamat</label>
+                        <div class="col-sm-10">
+                            <input value="{{ $data->alamat, old('category') }}" type="text"
+                                class="form-control @error('category') is-invalid @enderror" id="alamat" name="alamat"
+                                placeholder="Alamat">
+                            @error('alamat')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="bagian" class="col-sm-2 col-form-label">Bagian</label>
+                        <div class="col-sm-10">
+                            <select name="bagian" class="form-control @error('bagian') is-invalid @enderror"
+                                id="bagian">
+                                <option value="Bedah"
+                                    {{ $data->bagian == 'Bedah' || old('bagian') == 'Bedah' ? 'selected' : '' }}
+                                    selected>
+                                    Bedah</option>
+                                <option value="Endoskopi"
+                                    {{ $data->bagian == 'Endoskopi' || old('bagian') == 'Endoskopi' ? 'selected' : '' }}>
+                                   Endoskopi</option>
+                                <option value="Radiologi"
+                                    {{ $data->bagian == 'Radiologi' || old('bagian') == 'Radiologi' ? 'selected' : '' }}>
+                                    Radiologi</option>
+                              
+                            </select>
+                            @error('bagian')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="specialty" class="col-sm-2 col-form-label">Specialty</label>
+                        <div class="col-sm-10">
+                            <input value="{{ $data->specialty, old('specialty') }}" type="text"
+                                class="form-control @error('specialty') is-invalid @enderror" id="specialty" name="specialty"
+                                placeholder="Specialty">
+                            @error('specialty')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -90,18 +159,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="desc" class="col-sm-2 col-form-label">Deskripsi</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control @error('desc') is-invalid @enderror" id="summernote" name="desc"
-                                placeholder="Deskripsi">{{ $data->desc, old('desc') }}</textarea>
-                            @error('desc')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
+                    
                     <div class="mb-3 row" style="float: right">
                         <div class="col">
                             <button class="btn btn-warning" type="reset">Reset</button>

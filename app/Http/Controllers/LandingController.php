@@ -6,7 +6,7 @@ use App\Models\Fasilitas;
 use App\Models\Galery;
 use App\Models\sejarah;
 use App\Models\visimisi;
-
+use App\Models\daftardokter;
 class LandingController extends Controller
 {
     public function index()
@@ -42,5 +42,32 @@ class LandingController extends Controller
     public function radiology()
     {
         return view('landing.fasilitas.radiology');
+    }
+
+    public function sejarah()
+    {
+    return view('landing.tentang.sejarah', [
+        'page' => 'sejarah',
+        'url' => 'sejarah',
+        'data' => sejarah::all()
+    ]);
+}
+
+public function visimisi()
+{
+    return view('landing.tentang.visimisi', [
+        'page' => 'visimisi',
+        'url' => 'visimisi',
+        'data' => visimisi::all()
+    ]);
+}
+
+public function dokter()
+    {
+        return view('landing.tentang.dokter', [
+            'page' => 'daftardokter',
+            'url' => 'daftardokter',
+            'data' => daftardokter::all()
+        ]);
     }
 }

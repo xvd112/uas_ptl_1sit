@@ -1,4 +1,9 @@
 
+@extends('landing.layout.index')
+
+@section('content')
+<br>
+<main id="main">
 <body>
 
    <!-- Header -->
@@ -7,7 +12,7 @@
         <div class="row">
             <div class="col-xl-10 offset-xl-1">
               
-                <h6 class="t"> Tentang Kami | </h6>
+                <h6 class="t"> Tentang Kami | Sejarah </h6>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
@@ -69,21 +74,19 @@
   
                                     <div class="col">
                            <h1 >Sejarah</h1> 
-                           @foreach($sejarahs as $sejarah)             
-                 <p class="p1">{{ $sejarah->sejarah }}</p> </div>
+                           @foreach ($data as $d)          
+                 <p class="p1">{{ $d->sejarah }}</p> </div>
                     @endforeach
                 </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     
-<br><br>
-          
-<center><iframe width="1000" height="500" src="https://www.youtube.com/embed/z4_0bAJPk90?si=RvgHZ9Nuun2Ye2ho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
-      
-</center>
+
 <br><br>
 
-<script src="{{ asset('asset_landing/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
+
 
 </body>
+</main><!-- End #main -->
+@endsection

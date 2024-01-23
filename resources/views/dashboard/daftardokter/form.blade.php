@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
@@ -21,7 +20,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     <!-- Main row -->
     <div class="container">
         <div class="card">
@@ -43,8 +41,7 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
-                        <h4>Insert Galery Baru</h4>
+                        <h4>Insert Data Dokter Baru</h4>
                     </div>
                 </div>
             </div>
@@ -95,8 +92,7 @@
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
-                            @enderror
-                        
+                            @enderror             
                     </div>
                 </div>
                     <div class="mb-3 row">

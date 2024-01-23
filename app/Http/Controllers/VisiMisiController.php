@@ -73,19 +73,11 @@ class VisiMisiController extends Controller
             'visi' => 'required',
             'misi' => 'required'
         ];
-
         $data = visimisi::find($id);
-
-
         $validatedData = $request->validate($rules);
-
-        
-
         visimisi::where('id', $id)->update($validatedData);
-
         return redirect('/dashboard/visimisi')->with('success', 'Sukses mengedit data');
     }
-
     /**
      * Remove the specified resource from storage.
      */

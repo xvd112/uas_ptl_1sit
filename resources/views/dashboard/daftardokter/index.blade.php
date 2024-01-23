@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     <!-- Main row -->
     <div class="container">
@@ -23,7 +22,6 @@
                     <div class="col-md-10">
                         <h4>Daftar Dokter</h4>
                     </div>
-
                     <div class="col-md-2">
                         <a class="btn btn-primary btn-sm btn-right" href="{{ url(Request::url() . '/create') }}"
                             role="button">Tambah</a>

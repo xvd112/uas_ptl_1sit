@@ -48,7 +48,6 @@ class DaftarDokterController extends Controller
             'photo' => 'required|file|mimes:jpeg,png,jpg,gif,svg',
             
         ]);
-
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
             $destinationPath = 'asset/dokter/';
@@ -56,9 +55,7 @@ class DaftarDokterController extends Controller
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
         }
-
        daftardokter::create($validatedData);
-
         return redirect('/dashboard/daftardokter')->with('success', 'Sukses menginputkan data');
     }
 
@@ -104,19 +101,14 @@ class DaftarDokterController extends Controller
             'bagian' => 'required|max:255',
             'specialty' => 'required|max:255'
         ];
-
         $data = daftardokter::find($id);
-
         if ($request->title != $data->title) {
             $rules['kd_dok'] = 'required|max:255|unique:daftardokters';
         }
-
         if ($request->photo != '' && $request->photo != null) {
             $rules['photo'] = 'required|file|mimes:jpeg,png,jpg,gif,svg';
         }
-
         $validatedData = $request->validate($rules);
-
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
             $destinationPath = 'asset/dokter/';
@@ -124,9 +116,7 @@ class DaftarDokterController extends Controller
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
         }
-
         daftardokter::where('id', $id)->update($validatedData);
-
         return redirect('/dashboard/daftardokter')->with('success', 'Sukses mengedit data');
     }
 

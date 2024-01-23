@@ -56,6 +56,7 @@ class LandingController extends Controller
         'daftardokter' => daftardokter::where('bagian','radiology')->get(),
     ]);
     }
+    
     public function sejarah()
     {
     return view('landing.tentang.sejarah', [

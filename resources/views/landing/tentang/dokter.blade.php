@@ -1,9 +1,7 @@
 @extends('landing.layout.index')
-
 @section('content')
     <br>
     <main id="main">
-
         <!-- Header -->
         <header class="ex-header">
             <div class="container">
@@ -16,8 +14,6 @@
             </div> <!-- end of container -->
         </header> <!-- end of ex-header -->
         <!-- end of header -->
-
-
         <div class="container">
             @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
@@ -62,11 +58,9 @@
                                     <td class="d-flex justify-content-center"><img
                                             src="{{ asset('asset/dokter/' . $d->photo) }}" width="70px" height="100px"
                                             alt=""></td>
-
                                     </form>
                                     </td>
                             </tr>
-
                             @php
                                 $no++;
                             @endphp

@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
@@ -7,21 +6,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
             {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (session()->has('warning'))
         <div class="alert alertwarning alert-dismissible fade show alert-form" role="alert">
             {{ session('warning') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     <!-- Main row -->
     <div class="container">
         <div class="card">
@@ -35,7 +31,6 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session()->has('error'))
                             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
                                 {{ session('error') }}
@@ -43,7 +38,6 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         <h4>Edit Visi Misi</h4>
                     </div>
                 </div>
@@ -52,9 +46,7 @@
                 <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
-                    @csrf
-                  
-                    
+                    @csrf             
                     <div class="mb-3 row">
                         <label for="visi" class="col-sm-2 col-form-label">Visi</label>
                         <div class="col-sm-10">
@@ -66,8 +58,7 @@
                                 </div>
                             @enderror
                         </div>
-                    </div>
-                    
+                    </div> 
                         <div class="mb-3 row">
                             <label for="misi" class="col-sm-2 col-form-label">Misi</label>
                             <div class="col-sm-10">
@@ -78,8 +69,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-                        
+                            </div>                     
                     </div>
                     <div class="mb-3 row" style="float: right">
                         <div class="col">

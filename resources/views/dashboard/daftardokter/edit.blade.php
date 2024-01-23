@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
@@ -7,21 +6,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
             {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (session()->has('warning'))
         <div class="alert alertwarning alert-dismissible fade show alert-form" role="alert">
             {{ session('warning') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     <!-- Main row -->
     <div class="container">
         <div class="card">
@@ -35,7 +31,6 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session()->has('error'))
                             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
                                 {{ session('error') }}
@@ -43,7 +38,6 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         <h4>Edit Data Dokter</h4>
                     </div>
                 </div>
@@ -93,8 +87,7 @@
                         @error('tgl_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
-                                </div>
-                           
+                                </div>                   
                             @enderror
                         </div>
                     </div>
@@ -159,7 +152,6 @@
                             @enderror
                         </div>
                     </div>
-                    
                     <div class="mb-3 row" style="float: right">
                         <div class="col">
                             <button class="btn btn-warning" type="reset">Reset</button>

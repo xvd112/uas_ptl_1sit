@@ -1,10 +1,7 @@
 @extends('landing.layout.index')
-
 @section('content')
     <br>
     <main id="main">
-
-
         <!-- Header -->
         <header class="ex-header">
             <div class="container">
@@ -23,25 +20,12 @@
                 <p class="p3"> Visi</p>
                 @foreach ($data as $d)
                     <p class="p4">"{{ $d->visi }}."</p>
-
-
                     <p class="p3"> Misi</p>
-
-
-
                     <p class="p4">"{{ $d->misi }}."</p>
                 @endforeach
             </div>
         </div>
         <br>
-
-
-
-
-
-
-
-
         </div>
     </main><!-- End #main -->
 @endsection

@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
@@ -7,7 +6,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
             {{ session('error') }}
@@ -21,7 +19,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     <!-- Main row -->
     <div class="container">
         <div class="card">
@@ -35,7 +32,6 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session()->has('error'))
                             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
                                 {{ session('error') }}
@@ -52,9 +48,7 @@
                 <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
-                    @csrf
-                  
-                    
+                    @csrf                                    
                     <div class="mb-3 row">
                         <label for="sejarah" class="col-sm-2 col-form-label">Sejarah</label>
                         <div class="col-sm-10">

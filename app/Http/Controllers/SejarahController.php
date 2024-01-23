@@ -20,7 +20,6 @@ class SejarahController extends Controller
             'data' => sejarah::all()
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +27,6 @@ class SejarahController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -36,7 +34,6 @@ class SejarahController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      * 
@@ -52,7 +49,6 @@ class SejarahController extends Controller
             'data' => sejarah::find($id)
         ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      * 
@@ -68,12 +64,6 @@ class SejarahController extends Controller
             'data' => sejarah::find($id)
         ]);
     }
-
-
-
-
-
-
     /**
      * Update the specified resource in storage.
      * 
@@ -87,19 +77,12 @@ class SejarahController extends Controller
             
             'sejarah' => 'required'
         ];
-
         $data = sejarah::find($id);
-
-
         $validatedData = $request->validate($rules);
-
-        
-
         sejarah::where('id', $id)->update($validatedData);
 
         return redirect('/dashboard/sejarah')->with('success', 'Sukses mengedit data');
     }
-
     /**
      * Remove the specified resource from storage.
      * 

@@ -34,26 +34,18 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
-
                             <th scope="col">Visi</th>
                             <th scope="col">Misi</th>
-
                         </tr>
                     </thead>
                     <tbody>
-
-
                         <tr>
-
                             <td>{{ $d->visi }}</td>
                             <td>{{ $d->misi }}</td>
-
                             @csrf
-
                             </form>
                             </td>
                         </tr>
-
                     @empty
                         <p>Data tidak ditemukan !</p>
                         @endforelse

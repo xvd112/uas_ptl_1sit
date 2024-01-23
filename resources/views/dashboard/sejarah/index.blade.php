@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     <!-- Main row -->
     <div class="container">
@@ -9,14 +8,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
                 {{ session('error') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -34,25 +31,16 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
-
                             <th scope="col">Sejarah</th>
-
                         </tr>
                     </thead>
                     <tbody>
-
-
                         <tr>
-
                             <td class="p1">{{ $d->sejarah }}</td>
-
-
                             @csrf
-
                             </form>
                             </td>
                         </tr>
-
                     @empty
                         <p>Data tidak ditemukan !</p>
                         @endforelse

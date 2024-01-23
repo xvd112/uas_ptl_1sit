@@ -90,6 +90,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Modul Pesyaratan -> CRUD
     Route::resource('syarat', SyaratController::class);
+
+    // Modul Fasilitas -> CRUD
+    Route::resource('fasilitas', FasilitasController::class);
 });
 // Modul User -> CRUD
 // Route::resource('dashboard/user', UserController::class)->middleware('admin');

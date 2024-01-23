@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tentangs', function (Blueprint $table) {
-            $table->id();
-            $table->text('sejarah');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('isAdmin')->default(false);
         });
     }
 
@@ -23,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tentangs');
+        //
     }
 };

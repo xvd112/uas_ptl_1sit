@@ -24,38 +24,38 @@
                         <h4>Visi Misi</h4>
                     </div>
                     @forelse ($data as $d)
-                    <div class="col-md-2">
-                        <a class="btn btn-primary btn-sm btn-right" href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"
-                            role="button"> <i class="fa-solid fa-pen-to-square"> Edit</a></i>
-                    </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-warning btn-sm btn-right" href="{{ url(Request::url() . '/edit') }}"
+                                role="button">Edit</a>
+                        </div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
-                            
+
                             <th scope="col">Visi</th>
                             <th scope="col">Misi</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
-                       
-                      
-                            <tr>
-                              
-                                <td>{{ $d->visi }}</td>
-                                <td>{{ $d->misi }}</td>
-                               
-                                        @csrf
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                           
-                        @empty
-                            <p>Data tidak ditemukan !</p>
+
+
+                        <tr>
+
+                            <td>{{ $d->visi }}</td>
+                            <td>{{ $d->misi }}</td>
+
+                            @csrf
+
+                            </form>
+                            </td>
+                        </tr>
+
+                    @empty
+                        <p>Data tidak ditemukan !</p>
                         @endforelse
                     </tbody>
                 </table>

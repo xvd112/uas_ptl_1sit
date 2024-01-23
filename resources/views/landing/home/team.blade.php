@@ -1,5 +1,5 @@
 <!-- ======= Our Team Section ======= -->
-<section id="team" class="team">
+<section id="team" class="team sections-bg">
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">

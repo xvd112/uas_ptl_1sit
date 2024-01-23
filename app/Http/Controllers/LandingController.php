@@ -31,19 +31,31 @@ class LandingController extends Controller
 
     public function bedah()
     {
-        return view('landing.fasilitas.bedah');
+    return view('landing.fasilitas.bedah', [
+        'page' => 'fasilitas',
+        'url' => 'fasilitas',
+        'data' => fasilitas::where('nm_fasilitas','bedah')->get(),
+        'daftardokter' => daftardokter::where('bagian','bedah')->get(),
+    ]);
     }
-
     public function endoskopi()
     {
-        return view('landing.fasilitas.endoskopi');
+    return view('landing.fasilitas.endoskopi', [
+        'page' => 'fasilitas',
+        'url' => 'fasilitas',
+        'data' => fasilitas::where('nm_fasilitas','endoskopi')->get(),
+        'daftardokter' => daftardokter::where('bagian','endoskopi')->get(),
+    ]);
     }
-
     public function radiology()
     {
-        return view('landing.fasilitas.radiology');
+    return view('landing.fasilitas.radiology', [
+        'page' => 'fasilitas',
+        'url' => 'fasilitas',
+        'data' => fasilitas::where('nm_fasilitas','radiology')->get(),
+        'daftardokter' => daftardokter::where('bagian','radiology')->get(),
+    ]);
     }
-
     public function sejarah()
     {
     return view('landing.tentang.sejarah', [

@@ -58,7 +58,7 @@
                     <div class="mb-3 row">
                         <label for="visi" class="col-sm-2 col-form-label">Visi</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control @error('sejarah') is-invalid @enderror" id="summernote" name="visi"
+                            <textarea class="form-control @error('visi') is-invalid @enderror" id="summernote" name="visi"
                                 placeholder="visi">{{ $data->visi, old('visi') }}</textarea>
                             @error('visi')
                                 <div class="invalid-feedback">

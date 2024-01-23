@@ -25,7 +25,7 @@
                     </div>
                     @forelse ($data as $d)
                         <div class="col-md-2">
-                            <a class="btn btn-warning btn-sm btn-right" href="{{ url(Request::url() . '/edit') }}"
+                            <a class="btn btn-warning btn-sm btn-right" href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"
                                 role="button">Edit</a>
                         </div>
                 </div>

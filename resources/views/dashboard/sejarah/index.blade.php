@@ -44,7 +44,7 @@
 
                         <tr>
 
-                            <td>{{ $d->sejarah }}</td>
+                            <td class="p1">{{ $d->sejarah }}</td>
 
 
                             @csrf

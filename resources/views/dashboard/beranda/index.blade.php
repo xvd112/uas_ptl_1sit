@@ -6,39 +6,20 @@
     @include('dashboard.beranda.statview')
 @show
 
-<!-- Main row -->
 <div class="row">
-    <!-- Left col -->
-    <section class="col-lg-7 connectedSortable">
-        {{-- @section('sales')
-            @include('dashboard.layout.sales')
+    <section class="col-lg-6 connectedSortable">
+        @section('pieDok')
+            @include('dashboard.beranda.pieDok')
         @show
-
-        @section('chat')
-            @include('dashboard.layout.chat')
-        @show
-
-        @section('todo')
-            @include('dashboard.layout.todo')
-        @show --}}
     </section>
-    <!-- /.Left col -->
-    <!-- right col (We are only adding the ID to make the widgets sortable)-->
-    <section class="col-lg-5 connectedSortable">
-
-        {{-- @section('map')
-            @include('dashboard.layout.map')
+    <section class="col-lg-6 connectedSortable">
+        @section('lineDaftar')
+            @include('dashboard.beranda.lineDaftar')
         @show
-
-        @section('graph')
-            @include('dashboard.layout.graph')
-        @show
-
-        @section('calendar')
-            @include('dashboard.layout.calendar')
-        @show --}}
     </section>
-    <!-- right col -->
 </div>
-<!-- /.row (main row) -->
+
+@section('chart')
+    @include('dashboard.beranda.chart')
+@show
 @endsection

@@ -53,6 +53,8 @@
         href="{{ asset('asset_dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('asset_dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

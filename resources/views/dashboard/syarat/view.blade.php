@@ -21,7 +21,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-9">
-                        <h4>View Persyaratan : {{ $data->Fasilitas }}</h4>
+                        <h4>View Persyaratan untuk {{ $data->fasilitas }}</h4>
                     </div>
 
                     <div class="col-md-3">
@@ -42,10 +42,7 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="persyaratan" class="col-sm-2">Persyaratan</label>
-                                <div class="col-sm-10">
-                                    : {{ Str::of($data->persyaratan)->toHtmlString() }}
-                                </div>
+                                {{ Str::of($data->persyaratan)->toHtmlString() }}
                             </div>
                         </div>
                     </div>

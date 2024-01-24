@@ -46,30 +46,28 @@
                 <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
-                    @csrf             
+                    @csrf
                     <div class="mb-3 row">
                         <label for="visi" class="col-sm-2 col-form-label">Visi</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control @error('visi') is-invalid @enderror" id="summernote" name="visi"
-                                placeholder="visi">{{ $data->visi, old('visi') }}</textarea>
+                            <textarea class="form-control @error('visi') is-invalid @enderror" id="summernote" name="visi" placeholder="visi">{{ $data->visi, old('visi') }}</textarea>
                             @error('visi')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                    </div> 
-                        <div class="mb-3 row">
-                            <label for="misi" class="col-sm-2 col-form-label">Misi</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control @error('misi') is-invalid @enderror" id="summernote" name="misi"
-                                    placeholder="misi">{{ $data->misi, old('misi') }}</textarea>
-                                @error('misi')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>                     
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="misi" class="col-sm-2 col-form-label">Misi</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control @error('misi') is-invalid @enderror" id="summernote2" name="misi" placeholder="misi">{{ $data->misi, old('misi') }}</textarea>
+                            @error('misi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="mb-3 row" style="float: right">
                         <div class="col">

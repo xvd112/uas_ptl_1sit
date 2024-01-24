@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daftar;
+use App\Models\daftardokter;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $dataDok = daftardokter::select('bagian', DB::raw('count(*) as jml'))->groupby('bagian');
+        $dataDaftar = Daftar::select(DB::raw('month(tgl_book) as bln'), DB::raw('count(*) as jml'))
+            ->where(DB::raw('year(tgl_book)'), DB::raw('year(curdate())'))->groupby(DB::raw('month(tgl_book)'));
+
         return view('dashboard.beranda.index', [
             'page' => '',
             'url' => '',
@@ -17,6 +22,14 @@ class DashboardController extends Controller
             'daftar' => Daftar::count(),
             'dokter' => User::count(),
             'berita' => User::count(),
+            'dataDok' => [
+                'labels' => $dataDok->pluck('bagian'),
+                'data' => $dataDok->pluck('jml')
+            ],
+            'dataDaftar' => [
+                'labels' => $dataDaftar->pluck('bln'),
+                'data' => $dataDaftar->pluck('jml')
+            ]
         ]);
     }
 }

@@ -25,6 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         return view('dashboard.user.form', [
             'page' => 'User',
             'url' => 'user',
@@ -38,6 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin');
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
@@ -57,6 +59,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
+        $this->authorize('admin');
         return view('dashboard.user.view', [
             'page' => 'User',
             'url' => 'user',
@@ -70,6 +73,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        $this->authorize('admin');
         return view('dashboard.user.edit', [
             'page' => 'User',
             'url' => 'user',
@@ -83,6 +87,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('admin');
         $rules['name'] = 'required|max:255';
 
         $data = User::find($id);
@@ -112,6 +117,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('admin');
         User::destroy($id);
         return redirect('/dashboard/user')->with('success', 'Sukses menghapus data');
     }

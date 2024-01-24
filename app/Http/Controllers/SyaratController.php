@@ -39,7 +39,7 @@ class SyaratController extends Controller
     {
         $validatedData = $request->validate([
             'fasilitas' => 'required|unique:syarats',
-            'persyaratan' => 'required|max:255'
+            'persyaratan' => 'required|max:1000'
         ]);
 
         Syarat::create($validatedData);
@@ -77,12 +77,12 @@ class SyaratController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $rules['persyaratan'] = 'required|max:255';
+        $rules['persyaratan'] = 'required|max:1000';
 
         $data = Syarat::find($id);
 
         if ($request->fasilitas != $data->fasilitas) {
-            $rules['fasilitas'] = 'required|unique:syarats';
+            $rules['fasilitas'] = 'unique:syarats';
         }
 
         $validatedData = $request->validate($rules);

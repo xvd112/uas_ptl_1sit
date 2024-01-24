@@ -44,12 +44,12 @@
                                 <option value="Rawat Inap" {{ old('fasilitas') == 'Rawat Inap' ? 'selected' : '' }}
                                     selected>
                                     Rawat Inap</option>
-                                <option value="Rawat Jalan" {{ old('fasilitas') == 'Rawat Jalan' ? 'selected' : '' }}>
-                                    Rawat Jalan</option>
+                                <option value="BPJS" {{ old('fasilitas') == 'BPJS' ? 'selected' : '' }}>
+                                    BPJS</option>
                                 <option value="Radiologi" {{ old('fasilitas') == 'Radiologi' ? 'selected' : '' }}>
                                     Radiologi</option>
-                                <option value="Endoskopi" {{ old('fasilitas') == 'Endoskopi' ? 'selected' : '' }}>
-                                    Endoskopi</option>
+                                <option value="Umum" {{ old('fasilitas') == 'Umum' ? 'selected' : '' }}>
+                                    Umum</option>
                             </select>
                             @error('fasilitas')
                                 <div class="invalid-feedback">

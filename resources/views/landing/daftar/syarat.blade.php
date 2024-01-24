@@ -12,6 +12,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            <h1>Persyaratan</h1>
             {{ Str::of($data->persyaratan)->toHtmlString() }}
         </div>
     </main><!-- End #main -->

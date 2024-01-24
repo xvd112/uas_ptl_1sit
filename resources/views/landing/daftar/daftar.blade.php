@@ -90,12 +90,12 @@
                     <select name="layanan" class="form-control" id="layanan">
                         <option value="Rawat Inap" {{ old('layanan') == 'Rawat Inap' ? 'selected' : '' }} selected>
                             Rawat Inap</option>
-                        <option value="Rawat Jalan" {{ old('layanan') == 'Rawat Jalan' ? 'selected' : '' }}>
-                            Rawat Jalan</option>
+                        <option value="BPJS" {{ old('layanan') == 'BPJS' ? 'selected' : '' }}>
+                            BPJS</option>
                         <option value="Radiologi" {{ old('layanan') == 'Radiologi' ? 'selected' : '' }}>
                             Radiologi</option>
-                        <option value="Endoskopi" {{ old('layanan') == 'Endoskopi' ? 'selected' : '' }}>
-                            Endoskopi</option>
+                        <option value="Umum" {{ old('layanan') == 'Umum' ? 'selected' : '' }}>
+                            Umum</option>
                     </select>
                     @error('layanan')
                         <div class="invalid-feedback">

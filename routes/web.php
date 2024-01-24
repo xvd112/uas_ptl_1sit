@@ -76,7 +76,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Modul Galery -> CRUD
     Route::resource('galeri', GaleryController::class);
 
-     // Modul Sejarah -> CRUD
+    // Modul Sejarah -> CRUD
     Route::resource('sejarah', SejarahController::class);
 
     // Modul VisiMisi -> CRUD
@@ -97,14 +97,6 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 // Modul User -> CRUD
 // Route::resource('dashboard/user', UserController::class)->middleware('admin');
 /* End Dashboard */
-
-Route::get('/dashboard/fasilitas', [FasilitasController::class, 'index']);
-Route::get('/dashboard/fasilitas/create', [FasilitasController::class, 'create'])->name('fasilitas.create');
-Route::post('/dashboard/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
-Route::get('/dashboard/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
-Route::put('/dashboard/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
-Route::delete('/dashboard/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
-Route::get('/dashboard/fasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.view');
 
 // landing page fasilitas//
 Route::get('/bedah', [LandingController::class, 'bedah']);

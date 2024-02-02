@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Daftar;
+use App\Models\Galery;
+use App\Models\Kontak;
 use App\Models\Syarat;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -56,7 +58,12 @@ class DaftarController extends Controller
             return redirect('/dashboard/daftar')->with('success_daftar', 'Data Berhasil Ditambahkan!');
         } else {
             Session::flash('success_dftr', 'Pendaftaran Berhasil!');
-            return view('landing.daftar.syarat', ['page' => 'Pendaftaran', 'data' => Syarat::where('fasilitas', $validatedData['layanan'])->first()]);
+            return view('landing.daftar.syarat', [
+                'page' => 'Pendaftaran',
+                'data' => Syarat::where('fasilitas', $validatedData['layanan'])->first(),
+                'icon' => Galery::where('category', 'icon')->orderBy('created_at', 'DESC')->take(1)->get()[0],
+                'kontak' => Kontak::find(1)
+            ]);
         }
     }
 

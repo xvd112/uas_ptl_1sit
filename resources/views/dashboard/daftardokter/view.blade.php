@@ -56,7 +56,7 @@
                             <div class="mb-3 row">
                                 <label for="tempat" class="col-sm-3">Tempat/Tgl Lahir</label>
                                 <div class="col-sm-9">
-                                    : {{ Str::of($data->tempat)->toHtmlString() }}
+                                    : {{ Str::of($data->tempat)->toHtmlString() }}/{{ $data->tgl_lahir }}
                                 </div>
                             </div>
                                 <div class="mb-3 row">

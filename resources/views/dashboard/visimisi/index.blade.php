@@ -1,5 +1,4 @@
 @extends('dashboard.layout.index')
-
 @section('content')
     <!-- Main row -->
     <div class="container">

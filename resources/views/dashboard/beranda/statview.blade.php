@@ -25,7 +25,7 @@
             <div class="icon">
                 <i class="ion fa-solid fa-user-doctor"></i>
             </div>
-            <a href="{{ Request::url() . '/dokter' }}" class="small-box-footer">More info <i
+            <a href="{{ Request::url() . '/daftardokter' }}" class="small-box-footer">More info <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>

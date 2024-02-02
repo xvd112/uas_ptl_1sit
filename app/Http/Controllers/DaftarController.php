@@ -49,7 +49,7 @@ class DaftarController extends Controller
             'email' => 'email:dns',
             'telpon' => 'required|numeric',
             'layanan' => 'required',
-            'alamat' => 'max:255'
+            'alamat' => 'max:1000'
         ]);
 
         Daftar::create($validatedData);
@@ -106,7 +106,7 @@ class DaftarController extends Controller
             'email' => 'email:dns',
             'telpon' => 'required|numeric',
             'layanan' => 'required',
-            'alamat' => 'max:255'
+            'alamat' => 'max:1000'
         ]);
 
         Daftar::where('id', $id)->update($validatedData);

@@ -21,7 +21,7 @@ class DashboardController extends Controller
             'url' => '',
             'user' => User::count(),
             'daftar' => Daftar::count(),
-            'dokter' => User::count(),
+            'dokter' => daftardokter::count(),
             'berita' => Berita::count(),
             'dataDok' => [
                 'labels' => $dataDok->pluck('bagian'),

@@ -41,7 +41,7 @@ class GaleryController extends Controller
             'title' => 'required|max:255|unique:galeries',
             'category' => 'required|max:255',
             'photo' => 'required|file|mimes:jpeg,png,jpg,gif,svg',
-            'desc' => 'max:255'
+            'desc' => 'max:1000'
         ]);
 
         if (key_exists('photo', $validatedData)) {
@@ -90,7 +90,7 @@ class GaleryController extends Controller
     {
         $rules = [
             'category' => 'required|max:255',
-            'desc' => 'max:255'
+            'desc' => 'max:1000'
         ];
 
         $data = Galery::find($id);

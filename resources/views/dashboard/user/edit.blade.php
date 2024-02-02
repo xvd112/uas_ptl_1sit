@@ -95,7 +95,7 @@
                         <label for="foto" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-2">
                             @if ($data->foto)
-                                <img src="{{ asset('asset/img/' . $data->foto) }}" class="img-preview img-fluid">
+                                <img src="{{ asset('asset/img/user/' . $data->foto) }}" class="img-preview img-fluid">
                             @else
                                 <img src="{{ asset('asset/img/user.png') }}" class="img-preview img-fluid">
                             @endif

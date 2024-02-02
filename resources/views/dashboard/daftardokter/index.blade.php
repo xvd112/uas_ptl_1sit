@@ -29,6 +29,15 @@
                 </div>
             </div>
             <div class="card-body">
+                <form action="{{ url(Request::url() . '/') }}">
+                    <div class="input-group mb-3 btn-right col-md-5">
+                        <input type="text" class="form-control" placeholder="Search..." name="search"
+                            value="{{ request('search') }}">
+                        <button class="btn btn-secondary" type="submit"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+
+            <div class="card-body">
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
@@ -71,6 +80,8 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="mt-3 d-flex justify-content-center">
+                    {{ $data->links() }}
             </div>
         </div>
     </div>

@@ -13,9 +13,9 @@ class DaftarDokterController extends Controller
     public function index()
     {
         return view('dashboard.daftardokter.index', [
-            'page' => 'daftardokter',
+            'data' => daftardokter::latest()->filter(request(['search']))->paginate(5)->withQueryString(),
             'url' => 'daftardokter',
-            'data' => daftardokter::all()
+            'page' => 'daftardokter'
         ]);
     }
 

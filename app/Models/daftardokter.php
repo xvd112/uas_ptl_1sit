@@ -9,14 +9,20 @@ class daftardokter extends Model
 {
     use HasFactory;
     protected $table ='daftardokters';
-    protected $fillable = [
-        'kd_dok',
-        'nama',
-        'tempat',
-        'tgl_lahir',
-        'alamat',
-        'bagian',
-        'specialty',
-        'photo',
-    ];
+    protected $guarded = ['id'];
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('kd_dok', 'like', '%' . $search . '%')
+                ->orWhere('nama', 'like', '%' . $search . '%')
+                ->orWhere('tempat', 'like', '%' . $search . '%')
+                ->orWhere('tgl_lahir', 'like', '%' . $search . '%')
+                ->orWhere('alamat', 'like', '%' . $search . '%')
+                ->orWhere('bagian', 'like', '%' . $search . '%')
+                ->orWhere('specialty', 'like', '%' . $search . '%')
+                ->orWhere('photo', 'like', '%' . $search . '%');
+        });
+    }
 }
+

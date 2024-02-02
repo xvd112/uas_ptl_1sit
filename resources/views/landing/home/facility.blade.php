@@ -15,7 +15,10 @@
                             {{ Str::of($iconfasi[$i])->toHtmlString() }}
                         </div>
                         <h3>{{ $f->nm_fasilitas }}</h3>
-                        <p>{{ substr($f->deskripsi, 0, 260) }}</p>
+                        <p>
+                            {{-- {{ substr($f->deskripsi, 0, 260) }} --}}
+                            {{ substr(Str::of($f->deskripsi)->toHtmlString(), 0, 260) }}
+                        </p>
                         <a href="{{ '/' . Str::lcfirst($f->nm_fasilitas) }}" class="readmore stretched-link">Read more
                             <i class="bi bi-arrow-right"></i></a>
                     </div>

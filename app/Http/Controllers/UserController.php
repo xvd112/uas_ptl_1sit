@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('dashboard.user.index', [
             'page' => 'User',
             'url' => 'user',
-            'data' => User::all()
+            'data' => User::latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -43,15 +43,24 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:5|max:255',
+            'foto' => 'file|mimes:jpeg,png,jpg,gif,svg'
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['isAdmin'] = $request->isAdmin == 'on' ? true : false;
 
+        if (key_exists('foto', $validatedData)) {
+            $image = $request->file('foto');
+            $destinationPath = 'asset/img/user/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $validatedData['foto'] = $profileImage;
+        }
+
         User::create($validatedData);
 
-        return redirect('/dashboard/user')->with('success', 'Sukses menginputkan data');
+        return redirect('/dashboard/user')->with('success_user', 'Sukses menginputkan data');
     }
 
     /**
@@ -100,17 +109,34 @@ class UserController extends Controller
             $rules['password'] = 'required|min:5|max:255';
         }
 
+        if ($request->foto != '' && $request->foto != null) {
+            $rules['foto'] = 'file|mimes:jpeg,png,jpg,gif,svg';
+        }
+
         $validatedData = $request->validate($rules);
 
         if (key_exists('password', $validatedData)) {
             $validatedData['password'] = bcrypt($validatedData['password']);
         }
 
+        if (key_exists('foto', $validatedData)) {
+            $destinationPath = 'asset/img/user/';
+
+            if ($request->oldfoto && $request->oldfoto != 'user.png') {
+                unlink($destinationPath . $request->oldfoto);
+            }
+
+            $image = $request->file('foto');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $validatedData['foto'] = $profileImage;
+        }
+
         $validatedData['isAdmin'] = $request->isAdmin == 'on' ? true : false;
 
         User::where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/user')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/user')->with('success_user', 'Sukses mengedit data');
     }
     /**
      * Remove the specified resource from storage.
@@ -118,7 +144,21 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $this->authorize('admin');
-        User::destroy($id);
-        return redirect('/dashboard/user')->with('success', 'Sukses menghapus data');
+
+        if ($id != auth()->user()->id) {
+            $image = User::find($id)->photo;
+            if (User::find($id)->photo) {
+                $destinationPath = 'asset/img/galeri/';
+
+                if ($image) {
+                    unlink($destinationPath . $image);
+                }
+            }
+
+            User::destroy($id);
+            return redirect('/dashboard/user')->with('success_user', 'Sukses menghapus data');
+        }
+
+        return redirect('/dashboard/user')->with('warning_user', 'Data tidak dapat dihapus');
     }
 }

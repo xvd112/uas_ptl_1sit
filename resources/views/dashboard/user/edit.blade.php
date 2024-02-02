@@ -49,7 +49,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST">
+                <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
+                    enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="mb-3 row">
@@ -84,6 +85,26 @@
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 id="password" name="password" placeholder="Password Baru">
                             @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                        <div class="col-sm-2">
+                            @if ($data->foto)
+                                <img src="{{ asset('asset/img/' . $data->foto) }}" class="img-preview img-fluid">
+                            @else
+                                <img src="{{ asset('asset/img/user.png') }}" class="img-preview img-fluid">
+                            @endif
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="oldfoto" value="{{ $data->foto }}">
+                            <input type="file" id="photo" name="foto" class="form-control"
+                                onchange="previewImage()">
+                            @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

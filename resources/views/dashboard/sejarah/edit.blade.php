@@ -48,7 +48,7 @@
                 <form action="{{ url(str_replace('/edit', '', Request::url())) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
-                    @csrf                                    
+                    @csrf
                     <div class="mb-3 row">
                         <label for="sejarah" class="col-sm-2 col-form-label">Sejarah</label>
                         <div class="col-sm-10">

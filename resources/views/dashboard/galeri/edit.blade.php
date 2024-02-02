@@ -80,9 +80,18 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="photo" class="col-sm-2 col-form-label">Photo Baru</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="photo" class="form-control">
+                        <label for="photo" class="col-sm-2 col-form-label">Photo</label>
+                        <div class="col-sm-2">
+                            @if ($data->photo)
+                                <img src="{{ asset('asset/img/galeri/' . $data->photo) }}" class="img-preview img-fluid">
+                            @else
+                                <img src="{{ asset('asset/img/user.png') }}" class="img-preview img-fluid">
+                            @endif
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="oldfoto" value="{{ $data->photo }}">
+                            <input type="file" id="photo" name="photo" class="form-control"
+                                onchange="previewImage()">
                             @error('photo')
                                 <div class="invalid-feedback">
                                     {{ $message }}

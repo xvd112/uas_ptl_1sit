@@ -2,15 +2,15 @@
 @section('content')
     <!-- Main row -->
     <div class="container">
-        @if (session()->has('success'))
+        @if (session()->has('success_sjrh'))
             <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                {{ session('success') }}
+                {{ session('success_sjrh') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        @if (session()->has('error'))
+        @if (session()->has('error_sjrh'))
             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
-                {{ session('error') }}
+                {{ session('error_sjrh') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -22,8 +22,8 @@
                     </div>
                     @forelse ($data as $d)
                         <div class="col-md-2">
-                            <a class="btn btn-warning btn-sm btn-right" href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"
-                                role="button">Edit</a>
+                            <a class="btn btn-warning btn-sm btn-right"
+                                href="{{ url(Request::url() . '/' . $d->id . '/edit') }}" role="button">Edit</a>
                         </div>
                 </div>
             </div>

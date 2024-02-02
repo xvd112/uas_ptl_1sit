@@ -77,24 +77,24 @@
                     </div>
                     <div class="mb-3 row">
                         <label for="tempat" class="col-sm-2 col-form-label">Tempat/Tgl Lahir</label>
-                        
+
                         <div class="col-sm-6">
-                       
+
                             <input value="{{ old('tempat') }}" type="text"
                                 class="form-control @error('tempat') is-invalid @enderror" id="tempat" name="tempat"
                                 placeholder="Tempat Lahir">
-                            </div>
-                                <div class="col-sm-4">
-                                <input value="{{ date('Y-m-d'), old('tgl_book') }}" type="date"
-                                class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir"
-                                placeholder="Tempat Lahir">
+                        </div>
+                        <div class="col-sm-4">
+                            <input value="{{ date('Y-m-d'), old('tgl_book') }}" type="date"
+                                class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir"
+                                name="tgl_lahir" placeholder="Tempat Lahir">
                             @error('tgl_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
-                            @enderror             
+                            @enderror
+                        </div>
                     </div>
-                </div>
                     <div class="mb-3 row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
@@ -113,8 +113,7 @@
                         <div class="col-sm-10">
                             <select name="bagian" class="form-control @error('layanan') is-invalid @enderror"
                                 id="bagian">
-                                <option value="Bedah" {{ old('bagian') == 'Bedah' ? 'selected' : '' }}
-                                    selected>
+                                <option value="Bedah" {{ old('bagian') == 'Bedah' ? 'selected' : '' }} selected>
                                     Bedah</option>
                                 <option value="Endoskopi" {{ old('bagian') == 'Endoskopi' ? 'selected' : '' }}>
                                     Endoskopi</option>
@@ -132,8 +131,8 @@
                         <label for="specialty" class="col-sm-2 col-form-label">specialty</label>
                         <div class="col-sm-10">
                             <input value="{{ old('specialty') }}" type="text"
-                                class="form-control @error('specialty') is-invalid @enderror" id="specialty" name="specialty"
-                                placeholder="specialty">
+                                class="form-control @error('specialty') is-invalid @enderror" id="specialty"
+                                name="specialty" placeholder="specialty">
                             @error('specialty')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -152,7 +151,7 @@
                             @enderror
                         </div>
                     </div>
-                    
+
                     <div class="mb-3 row" style="float: right">
                         <div class="col">
                             <button class="btn btn-warning" type="reset">Reset</button>

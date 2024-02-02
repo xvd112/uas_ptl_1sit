@@ -44,7 +44,7 @@
                             <div class="mb-3 row">
                                 <label for="nm_fasilitas" class="col-sm-2">Nama Fasilitas</label>
                                 <div class="col-sm-8">
-                                :    {{ $data->nm_fasilitas }}
+                                    : {{ $data->nm_fasilitas }}
                                 </div>
                             </div>
 

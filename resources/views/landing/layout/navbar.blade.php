@@ -2,14 +2,38 @@
 <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
-            <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:rs_kasih_ibu.com">rs_kasih_ibu.com</a></i>
-            <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="tel:+621 12345">+621 12345</a></span></i>
+            <i class="bi bi-envelope d-flex align-items-center">
+                <span>
+                    <a class="alink"
+                        href="{{ $kontak == null || $kontak->email == null || $kontak->email == '' ? '#' : 'mailto:' . $kontak->email }}"
+                        @if ($kontak == null || $kontak->email == null || $kontak->email == '') style="pointer-events: none" @endif>
+                        {{ $kontak == null || $kontak->email == null || $kontak->email == '' ? '-' : $kontak->email }}
+                    </a>
+                </span>
+            </i>
+            <i class="bi bi-phone d-flex align-items-center ms-4">
+                <span>
+                    <a class="alink"
+                        href="{{ $kontak == null || $kontak->telepon == null || $kontak->telepon == '' ? '#' : 'tel:' . $kontak->telepon }}"
+                        @if ($kontak == null || $kontak->telepon == null || $kontak->telepon == '') style="pointer-events: none" @endif>
+                        {{ $kontak == null || $kontak->telepon == null || $kontak->telepon == '' ? '-' : $kontak->telepon }}
+                    </a>
+                </span>
+            </i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
-            <a href="https://twitter.com/" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.linkedin.com/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+            <a href="{{ $kontak == null || $kontak->twitter == null || $kontak->twitter == '' ? '#' : $kontak->twitter }}"
+                @if ($kontak == null || $kontak->twitter == null || $kontak->twitter == '') style="pointer-events: none" @endif target="_blank" class="twitter"><i
+                    class="bi bi-twitter"></i></a>
+            <a href="{{ $kontak == null || $kontak->fb == null || $kontak->fb == '' ? '#' : $kontak->fb }}"
+                @if ($kontak == null || $kontak->fb == null || $kontak->fb == '') style="pointer-events: none" @endif target="_blank"
+                class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="{{ $kontak == null || $kontak->ig == null || $kontak->ig == '' ? '#' : $kontak->ig }}"
+                @if ($kontak == null || $kontak->ig == null || $kontak->ig == '') style="pointer-events: none" @endif target="_blank"
+                class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="{{ $kontak == null || $kontak->linkin == null || $kontak->linkin == '' ? '#' : $kontak->linkin }}"
+                @if ($kontak == null || $kontak->linkin == null || $kontak->linkin == '') style="pointer-events: none" @endif target="_blank"
+                class="linkedin"><i class="bi bi-linkedin"></i></a>
         </div>
     </div>
 </section><!-- End Top Bar -->
@@ -18,7 +42,13 @@
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a href="/" class="logo d-flex align-items-center">
-            <h1><span><i class="fa-solid fa-stethoscope"></i></span> Rumah Sakit Kasih Ibu</h1>
+            <h1>
+                <span>
+                    <img src="{{ asset('asset/img/galeri/' . $icon->photo) }}" class="img-icon" alt="User Image">
+                </span>
+                Rumah Sakit
+                Kasih Ibu
+            </h1>
         </a>
         <nav id="navbar" class="navbar">
             <ul>

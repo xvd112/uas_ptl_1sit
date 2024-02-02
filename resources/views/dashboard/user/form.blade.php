@@ -49,12 +49,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ url(str_replace('/create', '', Request::url())) }}" method="POST">
+                <form action="{{ url(str_replace('/create', '', Request::url())) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="name" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input value="{{ old('name') }}" type="text"
+                            <input autofocus value="{{ old('name') }}" type="text"
                                 class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                 placeholder="Nama">
                             @error('name')
@@ -83,6 +84,21 @@
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 id="password" name="password" placeholder="Password">
                             @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                        <div class="col-sm-2">
+                            <img src="{{ asset('asset/img/user.png') }}" class="img-preview img-fluid">
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="file" id="photo" name="foto" class="form-control"
+                                onchange="previewImage()">
+                            @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

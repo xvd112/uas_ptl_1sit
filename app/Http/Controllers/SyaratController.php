@@ -15,7 +15,7 @@ class SyaratController extends Controller
         return view('dashboard.syarat.index', [
             'page' => 'Persyaratan',
             'url' => 'syarat',
-            'data' => Syarat::all()
+            'data' => Syarat::latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -43,7 +43,7 @@ class SyaratController extends Controller
         ]);
 
         Syarat::create($validatedData);
-        return redirect('/dashboard/syarat')->with('success', 'Sukses menginputkan data');
+        return redirect('/dashboard/syarat')->with('success_syarat', 'Sukses menginputkan data');
     }
 
     /**
@@ -88,7 +88,7 @@ class SyaratController extends Controller
         $validatedData = $request->validate($rules);
         Syarat::where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/syarat')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/syarat')->with('success_syarat', 'Sukses mengedit data');
     }
 
     /**
@@ -97,6 +97,6 @@ class SyaratController extends Controller
     public function destroy(string $id)
     {
         Syarat::destroy($id);
-        return redirect('/dashboard/syarat')->with('success', 'Sukses menghapus data');
+        return redirect('/dashboard/syarat')->with('success_syarat', 'Sukses menghapus data');
     }
 }

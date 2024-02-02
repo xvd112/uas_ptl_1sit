@@ -6,9 +6,9 @@
             <h2>Persyaratan</h2>
         </div>
         <div class="row mtop">
-            @if (session()->has('success'))
+            @if (session()->has('success_dftr'))
                 <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                    {{ session('success') }}
+                    {{ session('success_dftr') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif

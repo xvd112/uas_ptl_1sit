@@ -59,23 +59,23 @@
                                     : {{ Str::of($data->tempat)->toHtmlString() }}
                                 </div>
                             </div>
-                                <div class="mb-3 row">
-                                    <label for="alamat" class="col-sm-3">Alamat</label>
-                                    <div class="col-sm-9">
-                                        : {{ Str::of($data->alamat)->toHtmlString() }}
-                                    </div>
+                            <div class="mb-3 row">
+                                <label for="alamat" class="col-sm-3">Alamat</label>
+                                <div class="col-sm-9">
+                                    : {{ Str::of($data->alamat)->toHtmlString() }}
                                 </div>
-                                    <div class="mb-3 row">
-                                        <label for="bagian" class="col-sm-3">Bagian</label>
-                                        <div class="col-sm-9">
-                                            : {{ Str::of($data->bagian)->toHtmlString() }}
-                                        </div>
-                                    </div>
-                                        <div class="mb-3 row">
-                                            <label for="specialty" class="col-sm-3">Specialty</label>
-                                            <div class="col-sm-9">
-                                                : {{ Str::of($data->specialty)->toHtmlString() }}
-                                            </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="bagian" class="col-sm-3">Bagian</label>
+                                <div class="col-sm-9">
+                                    : {{ Str::of($data->bagian)->toHtmlString() }}
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="specialty" class="col-sm-3">Specialty</label>
+                                <div class="col-sm-9">
+                                    : {{ Str::of($data->specialty)->toHtmlString() }}
+                                </div>
                             </div>
                         </div>
                     </div>

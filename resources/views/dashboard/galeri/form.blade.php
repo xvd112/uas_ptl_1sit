@@ -80,8 +80,12 @@
                     </div>
                     <div class="mb-3 row">
                         <label for="photo" class="col-sm-2 col-form-label">Photo</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="photo" class="form-control">
+                        <div class="col-sm-2">
+                            <img src="{{ asset('asset/img/user.png') }}" class="img-preview img-fluid">
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="file" id="photo" name="photo" class="form-control"
+                                onchange="previewImage()">
                             @error('photo')
                                 <div class="invalid-feedback">
                                     {{ $message }}

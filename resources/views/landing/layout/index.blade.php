@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('asset/img/icon.png') }}" rel="icon">
-    <link href="{{ asset('asset/img/icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('asset/img/galeri/' . $icon->photo) }}" rel="icon">
+    <link href="{{ asset('asset/img/galeri/' . $icon->photo) }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +63,14 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <div id="preloader"></div>
+
+    <script>
+        window.setTimeout(function() {
+            $(".alert").slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 3000);
+    </script>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('asset_landing/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

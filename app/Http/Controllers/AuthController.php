@@ -31,9 +31,9 @@ class AuthController extends Controller
 
         User::create($validatedData);
 
-        // session()->flash('success', 'Registration successfull! Pleas login');
+        // session()->flash('success_auth', 'Registration successfull! Pleas login');
 
-        return redirect('/login')->with('success', 'Registration successfull! Please login');
+        return redirect('/login')->with('success_auth', 'Registration successfull! Please login');
     }
 
     // Menampilkan Form Login
@@ -58,7 +58,7 @@ class AuthController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('error', 'Login failed!')->withInput();
+        return back()->with('error_auth', 'Login failed!')->withInput();
     }
 
     // Logout
@@ -71,7 +71,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         if (Str::contains($request->url, 'dashboard')) {
-            return redirect('/login')->with('success', 'Logout successfull!');
+            return redirect('/login')->with('success_auth', 'Logout successfull!');
         } else {
             return redirect('/');
         }

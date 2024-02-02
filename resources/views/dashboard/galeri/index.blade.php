@@ -3,16 +3,16 @@
 @section('content')
     <!-- Main row -->
     <div class="container">
-        @if (session()->has('success'))
+        @if (session()->has('success_gal'))
             <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                {{ session('success') }}
+                {{ session('success_gal') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
-        @if (session()->has('error'))
+        @if (session()->has('error_gal'))
             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
-                {{ session('error') }}
+                {{ session('error_gal') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -31,6 +31,14 @@
                 </div>
             </div>
             <div class="card-body">
+                <form action="{{ url(Request::url() . '/') }}">
+                    <div class="input-group mb-3 btn-right col-md-5">
+                        <input type="text" class="form-control" placeholder="Search..." name="search"
+                            value="{{ request('search') }}">
+                        <button class="btn btn-secondary" type="submit"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
@@ -50,19 +58,23 @@
                                 <th id="no">{{ $no }}</th>
                                 <td>{{ $d->title }}</td>
                                 <td>{{ $d->category }}</td>
-                                <td class="d-flex justify-content-center"><img src="{{ asset('asset/img/' . $d->photo) }}"
-                                        alt=""></td>
+                                <td class="d-flex justify-content-center"><img
+                                        src="{{ asset('asset/img/galeri/' . $d->photo) }}" alt=""></td>
                                 <td id="no">
                                     <a href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"><i
                                             class="fa-solid fa-pen"></i></a>
                                     <a href="{{ url(Request::url() . '/' . $d->id) }}">
                                         <i class="fa-solid fa-eye"></i></a>
-                                    <form class="d-inline" action="{{ url(Request::url() . '/' . $d->id) }}" method="POST">
-                                        @method('delete')
-                                        @csrf
-                                        <button onclick="return confirm('Are you sure to delete this data?')"
-                                            class="btn-logout"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+                                    @if ($d->category === 'cover' || $d->category === 'icon')
+                                    @else
+                                        <form class="d-inline" action="{{ url(Request::url() . '/' . $d->id) }}"
+                                            method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button onclick="return confirm('Are you sure to delete this data?')"
+                                                class="btn-logout"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                             @php
@@ -73,6 +85,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="mt-3 d-flex justify-content-center">
+                    {{ $data->links() }}
+                </div>
             </div>
         </div>
     </div>

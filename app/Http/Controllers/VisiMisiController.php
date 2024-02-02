@@ -34,7 +34,7 @@ class VisiMisiController extends Controller
      */
     public function store(Request $request)
     {
-       //
+        //
     }
 
     /**
@@ -69,14 +69,14 @@ class VisiMisiController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            
+
             'visi' => 'required',
             'misi' => 'required'
         ];
         $data = visimisi::find($id);
         $validatedData = $request->validate($rules);
         visimisi::where('id', $id)->update($validatedData);
-        return redirect('/dashboard/visimisi')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/visimisi')->with('success_visi', 'Sukses mengedit data');
     }
     /**
      * Remove the specified resource from storage.

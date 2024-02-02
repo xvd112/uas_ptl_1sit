@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        @if (auth()->user()->name !== $data->name)
+                        @if (auth()->user()->id !== $data->id)
                             <form class="d-inline" action="{{ url(Request::url() . '/' . $data->id) }}" method="POST">
                                 @method('delete')
                                 @csrf
@@ -40,38 +40,48 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="mb-3 row">
-                    <label for="name" class="col-sm-2">Nama</label>
-                    <div class="col-sm-10">
-                        : {{ $data->name }}
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{ asset('asset/img/user/' . $data->foto) }}" class="img-fluid rounded-start"
+                            alt="...">
                     </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="email" class="col-sm-2">Email</label>
-                    <div class="col-sm-10">
-                        : <a href="mailto:{{ $data->email }}">{{ $data->email }}</a>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="email" class="col-sm-2">isAdmin</label>
-                    <div class="col-sm-10">
-                        : {{ $data->isAdmin == 1 ? 'Yes' : 'No' }}
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="createdAt" class="col-sm-2">Created At</label>
-                    <div class="col-sm-10">
-                        : {{ $data->created_at }}
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="updatedAt" class="col-sm-2">Updated At</label>
-                    <div class="col-sm-10">
-                        : @if ($data->updated_by === null || $data->updated_by === '')
-                            {{ '-' }}
-                        @else
-                            {{ $data->updated_by }}
-                        @endif
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <div class="mb-3 row">
+                                <label for="name" class="col-sm-2">Nama</label>
+                                <div class="col-sm-10">
+                                    : {{ $data->name }}
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2">Email</label>
+                                <div class="col-sm-10">
+                                    : <a href="mailto:{{ $data->email }}">{{ $data->email }}</a>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2">isAdmin</label>
+                                <div class="col-sm-10">
+                                    : {{ $data->isAdmin == 1 ? 'Yes' : 'No' }}
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="createdAt" class="col-sm-2">Created At</label>
+                                <div class="col-sm-10">
+                                    : {{ $data->created_at }}
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="updatedAt" class="col-sm-2">Updated At</label>
+                                <div class="col-sm-10">
+                                    : @if ($data->updated_by === null || $data->updated_by === '')
+                                        {{ '-' }}
+                                    @else
+                                        {{ $data->updated_by }}
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

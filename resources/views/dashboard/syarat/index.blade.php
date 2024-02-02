@@ -3,16 +3,16 @@
 @section('content')
     <!-- Main row -->
     <div class="container">
-        @if (session()->has('success'))
+        @if (session()->has('success_syarat'))
             <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                {{ session('success') }}
+                {{ session('success_syarat') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
-        @if (session()->has('error'))
+        @if (session()->has('error_syarat'))
             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
-                {{ session('error') }}
+                {{ session('error_syarat') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -31,7 +31,15 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-hover table-bordered">
+                <form action="{{ url(Request::url() . '/') }}">
+                    <div class="input-group mb-3 btn-right col-md-5">
+                        <input type="text" class="form-control" placeholder="Search..." name="search"
+                            value="{{ request('search') }}">
+                        <button class="btn btn-secondary" type="submit"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+                <table class="table table-hover table-bordered">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">No</th>
@@ -54,7 +62,8 @@
                                             class="fa-solid fa-pen"></i></a>
                                     <a href="{{ url(Request::url() . '/' . $d->id) }}">
                                         <i class="fa-solid fa-eye"></i></a>
-                                    <form class="d-inline" action="{{ url(Request::url() . '/' . $d->id) }}" method="POST">
+                                    <form class="d-inline" action="{{ url(Request::url() . '/' . $d->id) }}"
+                                        method="POST">
                                         @method('delete')
                                         @csrf
                                         <button onclick="return confirm('Are you sure to delete this data?')"

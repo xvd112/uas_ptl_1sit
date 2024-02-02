@@ -12,7 +12,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('asset/img/user.png') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('asset/img/user/' . auth()->user()->foto) }}" class="img-bulat elevation-2"
+                    alt="User Image">
             </div>
             <div class="info">
                 <a href="#" style="pointer-events: none" class="d-block">{{ auth()->user()->name }}</a>

@@ -6,16 +6,16 @@
             @csrf
             <h1 id="title">Sign in</h1>
 
-            @if (session()->has('success'))
+            @if (session()->has('success_auth'))
                 <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                    {{ session('success') }}
+                    {{ session('success_auth') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
 
-            @if (session()->has('error'))
+            @if (session()->has('error_auth'))
                 <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
-                    {{ session('error') }}
+                    {{ session('error_auth') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif

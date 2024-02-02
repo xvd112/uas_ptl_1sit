@@ -18,7 +18,8 @@
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <div class="user-drop justify-content-center">
                     <div class="image">
-                        <img src="{{ asset('asset/img/user.png') }}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('asset/img/user/' . auth()->user()->foto) }}" class="img-bulat"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         {{ explode(' ', auth()->user()->name)[0] }}

@@ -100,6 +100,14 @@
     </div>
     <!-- ./wrapper -->
 
+    <script>
+        window.setTimeout(function() {
+            $(".alert").slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 3000);
+    </script>
+
     <!-- jQuery -->
     <script src="{{ asset('asset_dashboard/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->

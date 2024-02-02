@@ -82,12 +82,12 @@
                         </div>
                         <div class="col-sm-4">
                             <input value="{{ $data->tgl_lahir, old('tgl_lahir') }}" type="date"
-                            class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir"
-                            placeholder="Tanggal Lahir">
-                        @error('tgl_lahir')
+                                class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir"
+                                name="tgl_lahir" placeholder="Tanggal Lahir">
+                            @error('tgl_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
-                                </div>                   
+                                </div>
                             @enderror
                         </div>
                     </div>
@@ -110,16 +110,15 @@
                             <select name="bagian" class="form-control @error('bagian') is-invalid @enderror"
                                 id="bagian">
                                 <option value="Bedah"
-                                    {{ $data->bagian == 'Bedah' || old('bagian') == 'Bedah' ? 'selected' : '' }}
-                                    selected>
+                                    {{ $data->bagian == 'Bedah' || old('bagian') == 'Bedah' ? 'selected' : '' }} selected>
                                     Bedah</option>
                                 <option value="Endoskopi"
                                     {{ $data->bagian == 'Endoskopi' || old('bagian') == 'Endoskopi' ? 'selected' : '' }}>
-                                   Endoskopi</option>
+                                    Endoskopi</option>
                                 <option value="Radiologi"
                                     {{ $data->bagian == 'Radiologi' || old('bagian') == 'Radiologi' ? 'selected' : '' }}>
                                     Radiologi</option>
-                              
+
                             </select>
                             @error('bagian')
                                 <div class="invalid-feedback">
@@ -132,8 +131,8 @@
                         <label for="specialty" class="col-sm-2 col-form-label">Specialty</label>
                         <div class="col-sm-10">
                             <input value="{{ $data->specialty, old('specialty') }}" type="text"
-                                class="form-control @error('specialty') is-invalid @enderror" id="specialty" name="specialty"
-                                placeholder="Specialty">
+                                class="form-control @error('specialty') is-invalid @enderror" id="specialty"
+                                name="specialty" placeholder="Specialty">
                             @error('specialty')
                                 <div class="invalid-feedback">
                                     {{ $message }}

@@ -29,7 +29,7 @@ class FasilitasController extends Controller
             'url' => 'fasilitas',
             'subtitle' => 'Insert',
             'data' => Fasilitas::all()
-        ]);    
+        ]);
     }
 
     /**
@@ -46,7 +46,7 @@ class FasilitasController extends Controller
 
         Fasilitas::create($request->all());
 
-        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil ditambahkan!');
+        return redirect('/dashboard/fasilitas')->with('success_fasi', 'Data fasilitas berhasil ditambahkan!');
     }
 
     /**
@@ -100,7 +100,7 @@ class FasilitasController extends Controller
         $fasilitas = Fasilitas::find($id);
         $fasilitas->update($request->all());
 
-        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil diperbarui!');
+        return redirect('/dashboard/fasilitas')->with('success_fasi', 'Data fasilitas berhasil diperbarui!');
     }
 
     /**
@@ -113,6 +113,6 @@ class FasilitasController extends Controller
     {
         $fasilitas = Fasilitas::find($id);
         $fasilitas->delete();
-        return redirect('/dashboard/fasilitas')->with('success', 'Data fasilitas berhasil dihapus!');
+        return redirect('/dashboard/fasilitas')->with('success_fasi', 'Data fasilitas berhasil dihapus!');
     }
 }

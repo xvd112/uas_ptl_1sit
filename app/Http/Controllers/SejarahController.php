@@ -74,14 +74,14 @@ class SejarahController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            
+
             'sejarah' => 'required'
         ];
         $data = sejarah::find($id);
         $validatedData = $request->validate($rules);
         sejarah::where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/sejarah')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/sejarah')->with('success_sjrh', 'Sukses mengedit data');
     }
     /**
      * Remove the specified resource from storage.
@@ -91,7 +91,7 @@ class SejarahController extends Controller
      */
     public function destroy(string $id)
     {
-       sejarah::destroy($id);
-        return redirect('/dashboard/sejarah')->with('success', 'Sukses menghapus data');
+        sejarah::destroy($id);
+        return redirect('/dashboard/sejarah')->with('success_sjrh', 'Sukses menghapus data');
     }
 }

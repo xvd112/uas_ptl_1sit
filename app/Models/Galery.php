@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Galery extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('category', 'like', '%' . $search . '%');
+        });
+    }
 }

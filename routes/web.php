@@ -2,16 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DaftarDokterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\SyaratController;
-use App\Http\Controllers\TentangController;
 use App\Http\Controllers\VisiMisiController;
 
 /*
@@ -34,20 +35,26 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/daftar', [LandingController::class, 'daftar']);
 Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar');
 
-// Fasilitas - Bedah
-//  Route::get('/bedah', function () {
-//     return view('landing.fasilitas.bedah', ['active' => '']);
-// });
+// Berita
+Route::get('/berita', [LandingController::class, 'berita']);
+Route::get('/berita/{id}', [LandingController::class, 'detail']);
 
-// Fasilitas - Endoskopi
-// Route::get('/endoskopi', function () {
-//     return view('landing.fasilitas.endoskopi', ['active' => '']);
-// });
+// Kontak
+Route::get('/kontak', [LandingController::class, 'kontak']);
 
-// Fasilitas - Radiology
-// Route::get('/radiology', function () {
-//     return view('landing.fasilitas.radiology', ['active' => '']);
-// });
+
+// Fasilitas
+Route::get('/bedah', [LandingController::class, 'bedah']);
+Route::get('/endoskopi', [LandingController::class, 'endoskopi']);
+Route::get('/radiology', [LandingController::class, 'radiology']);
+
+// Tentang Kami
+Route::get('/sejarah', [LandingController::class, 'sejarah']);
+Route::get('/visimisi', [LandingController::class, 'visimisi']);
+
+// Dokter
+Route::get('/dokter', [LandingController::class, 'dokter']);
+
 /* End Landing */
 
 /* Auth */
@@ -87,22 +94,18 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Modul Pendaftaran -> CRUD
     Route::resource('daftar', DaftarController::class);
+    Route::delete('/daftar/hapusbanyak', [DaftarController::class, 'destroyMultiple']);
 
     // Modul Pesyaratan -> CRUD
     Route::resource('syarat', SyaratController::class);
 
     // Modul Fasilitas -> CRUD
     Route::resource('fasilitas', FasilitasController::class);
+
+    // Modul Kontak -> CRUD
+    Route::resource('kontak', KontakController::class);
+
+    // Modul Berita -> CRUD
+    Route::resource('berita', BeritaController::class);
 });
-// Modul User -> CRUD
-// Route::resource('dashboard/user', UserController::class)->middleware('admin');
 /* End Dashboard */
-
-// landing page fasilitas//
-Route::get('/bedah', [LandingController::class, 'bedah']);
-Route::get('/endoskopi', [LandingController::class, 'endoskopi']);
-Route::get('/radiology', [LandingController::class, 'radiology']);
-
-Route::get('/sejarah', [LandingController::class, 'sejarah']);
-Route::get('/visimisi', [LandingController::class, 'visimisi']);
-Route::get('/dokter', [LandingController::class, 'dokter']);

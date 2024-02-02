@@ -10,6 +10,7 @@
 
 .user-drop img {
     height: auto;
+    /* height: 2.1rem; */
     width: 2.1rem;
 }
 
@@ -62,4 +63,11 @@ td img {
 
 .p1 {
     text-align: justify;
+}
+
+.img-bulat {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 2.1rem !important;
+    width: 2.1rem !important;
 }

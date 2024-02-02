@@ -99,6 +99,11 @@ div .btn-sign-up:hover {
   border-top: 10px solid #009282;
 }
 
+.img-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .poto {
   height: 300px;
   width: 200px;

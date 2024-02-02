@@ -11,7 +11,7 @@
             @foreach ($team as $d)
                 <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="member">
-                        <img src="{{ asset('asset/img/' . $d->photo) }}" class="img-fluid poto" alt="">
+                        <img src="{{ asset('asset/img/galeri/' . $d->photo) }}" class="img-fluid poto" alt="">
                         <h4>{{ $d->title }}</h4>
                         <span>{{ Str::of(str_replace(['<br>', '<p>', '</p>'], '', $d->desc))->toHtmlString() }}</span>
                         {{-- <div class="social">

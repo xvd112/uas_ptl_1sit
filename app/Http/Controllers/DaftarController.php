@@ -16,7 +16,7 @@ class DaftarController extends Controller
     public function index()
     {
         return view('dashboard.daftar.index', [
-            'daftars' => Daftar::all(),
+            'daftars' => Daftar::latest()->filter(request(['search']))->paginate(5)->withQueryString(),
             'url' => 'daftar',
             'page' => 'Pendaftaran'
         ]);
@@ -53,9 +53,9 @@ class DaftarController extends Controller
         Daftar::create($validatedData);
 
         if (Str::contains(url()->current(), 'dashboard')) {
-            return redirect('/dashboard/daftar')->with('success', 'Data Berhasil Ditambahkan!');
+            return redirect('/dashboard/daftar')->with('success_daftar', 'Data Berhasil Ditambahkan!');
         } else {
-            Session::flash('success', 'Pendaftaran Berhasil!');
+            Session::flash('success_dftr', 'Pendaftaran Berhasil!');
             return view('landing.daftar.syarat', ['page' => 'Pendaftaran', 'data' => Syarat::where('fasilitas', $validatedData['layanan'])->first()]);
         }
     }
@@ -104,7 +104,7 @@ class DaftarController extends Controller
 
         Daftar::where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/daftar')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/daftar')->with('success_daftar', 'Sukses mengedit data');
     }
 
     /**
@@ -113,6 +113,6 @@ class DaftarController extends Controller
     public function destroy(string $id)
     {
         Daftar::destroy($id);
-        return redirect('/dashboard/daftar')->with('success', 'Sukses menghapus data');
+        return redirect('/dashboard/daftar')->with('success_daftar', 'Sukses menghapus data');
     }
 }

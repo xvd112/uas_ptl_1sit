@@ -4,6 +4,7 @@ $(function () {
   $('#summernote2').summernote()
 })
 
+// Data table 
 $(function () {
   $("#example1").DataTable({
     "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -20,6 +21,20 @@ $(function () {
   });
 });
 
+// image preview
+function previewImage() {
+  const image = document.querySelector('#photo');
+  const imgPreview = document.querySelector('.img-preview');
+
+  imgPreview.style.display = 'block';
+
+  const ofReader = new FileReader();
+  ofReader.readAsDataURL(image.files[0]);
+
+  ofReader.onload = function (oFREvent) {
+    imgPreview.src = oFREvent.target.result;
+  }
+}
 
 // yangga
 let slideIndex = 0;

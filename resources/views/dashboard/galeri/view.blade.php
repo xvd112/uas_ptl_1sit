@@ -25,13 +25,16 @@
                     </div>
 
                     <div class="col-md-3">
-                        <form class="d-inline" action="{{ url(Request::url() . '/' . $data->id) }}" method="POST">
-                            @method('delete')
-                            @csrf
-                            <button onclick="return confirm('Are you sure to delete this data?')"
-                                class="btn btn-danger btn-sm btn-logout btn-right"><i
-                                    class="fa-solid fa-trash"></i></button>
-                        </form>
+                        @if ($data->category === 'cover' || $data->category === 'icon')
+                        @else
+                            <form class="d-inline" action="{{ url(Request::url() . '/' . $data->id) }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button onclick="return confirm('Are you sure to delete this data?')"
+                                    class="btn btn-danger btn-sm btn-logout btn-right"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </form>
+                        @endif
                         <a class="btn btn-warning btn-sm btn-right" href="{{ url(Request::url() . '/edit') }}"
                             role="button">Edit</a>
                     </div>
@@ -40,7 +43,8 @@
             <div class="card-body">
                 <div class="row g-0">
                     <div class="col-md-3">
-                        <img src="{{ asset('asset/img/' . $data->photo) }}" class="img-fluid rounded-start" alt="...">
+                        <img src="{{ asset('asset/img/galeri/' . $data->photo) }}" class="img-fluid rounded-start"
+                            alt="...">
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">

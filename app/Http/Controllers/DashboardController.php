@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Daftar;
 use App\Models\daftardokter;
 use App\Models\User;
@@ -21,7 +22,7 @@ class DashboardController extends Controller
             'user' => User::count(),
             'daftar' => Daftar::count(),
             'dokter' => User::count(),
-            'berita' => User::count(),
+            'berita' => Berita::count(),
             'dataDok' => [
                 'labels' => $dataDok->pluck('bagian'),
                 'data' => $dataDok->pluck('jml')

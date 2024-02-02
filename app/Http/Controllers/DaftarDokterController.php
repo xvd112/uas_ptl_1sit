@@ -46,7 +46,7 @@ class DaftarDokterController extends Controller
             'bagian' => 'required|max:255',
             'specialty' => 'required|max:255',
             'photo' => 'required|file|mimes:jpeg,png,jpg,gif,svg',
-            
+
         ]);
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
@@ -55,8 +55,8 @@ class DaftarDokterController extends Controller
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
         }
-       daftardokter::create($validatedData);
-        return redirect('/dashboard/daftardokter')->with('success', 'Sukses menginputkan data');
+        daftardokter::create($validatedData);
+        return redirect('/dashboard/daftardokter')->with('success_dokter', 'Sukses menginputkan data');
     }
 
 
@@ -117,7 +117,7 @@ class DaftarDokterController extends Controller
             $validatedData['photo'] = $profileImage;
         }
         daftardokter::where('id', $id)->update($validatedData);
-        return redirect('/dashboard/daftardokter')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/daftardokter')->with('success_dokter', 'Sukses mengedit data');
     }
 
     /**
@@ -126,6 +126,6 @@ class DaftarDokterController extends Controller
     public function destroy(string $id)
     {
         daftardokter::destroy($id);
-        return redirect('/dashboard/daftardokter')->with('success', 'Sukses menghapus data');
+        return redirect('/dashboard/daftardokter')->with('success_dokter', 'Sukses menghapus data');
     }
 }

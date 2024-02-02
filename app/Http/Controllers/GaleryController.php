@@ -15,7 +15,7 @@ class GaleryController extends Controller
         return view('dashboard.galeri.index', [
             'page' => 'Galeri',
             'url' => 'galeri',
-            'data' => Galery::all()
+            'data' => Galery::latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -46,7 +46,7 @@ class GaleryController extends Controller
 
         if (key_exists('photo', $validatedData)) {
             $image = $request->file('photo');
-            $destinationPath = 'asset/img/';
+            $destinationPath = 'asset/img/galeri/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
@@ -54,7 +54,7 @@ class GaleryController extends Controller
 
         Galery::create($validatedData);
 
-        return redirect('/dashboard/galeri')->with('success', 'Sukses menginputkan data');
+        return redirect('/dashboard/galeri')->with('success_gal', 'Sukses menginputkan data');
     }
 
     /**
@@ -106,8 +106,13 @@ class GaleryController extends Controller
         $validatedData = $request->validate($rules);
 
         if (key_exists('photo', $validatedData)) {
+            $destinationPath = 'asset/img/galeri/';
+
+            if ($request->oldfoto && $request->oldfoto != 'user.png') {
+                unlink($destinationPath . $request->oldfoto);
+            }
+
             $image = $request->file('photo');
-            $destinationPath = 'asset/img/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $validatedData['photo'] = $profileImage;
@@ -115,7 +120,7 @@ class GaleryController extends Controller
 
         Galery::where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/galeri')->with('success', 'Sukses mengedit data');
+        return redirect('/dashboard/galeri')->with('success_gal', 'Sukses mengedit data');
     }
 
     /**
@@ -123,7 +128,16 @@ class GaleryController extends Controller
      */
     public function destroy(string $id)
     {
+        $image = Galery::find($id)->photo;
+        if (Galery::find($id)->photo) {
+            $destinationPath = 'asset/img/galeri/';
+
+            if ($image) {
+                unlink($destinationPath . $image);
+            }
+        }
+
         Galery::destroy($id);
-        return redirect('/dashboard/galeri')->with('success', 'Sukses menghapus data');
+        return redirect('/dashboard/galeri')->with('success_gal', 'Sukses menghapus data');
     }
 }

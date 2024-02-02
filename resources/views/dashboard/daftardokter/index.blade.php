@@ -2,16 +2,16 @@
 @section('content')
     <!-- Main row -->
     <div class="container">
-        @if (session()->has('success'))
+        @if (session()->has('success_dokter'))
             <div class="alert alert-success alert-dismissible fade show alert-form" role="alert">
-                {{ session('success') }}
+                {{ session('success_dokter') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
-        @if (session()->has('error'))
+        @if (session()->has('error_dokter'))
             <div class="alert alert-danger alert-dismissible fade show alert-form" role="alert">
-                {{ session('error') }}
+                {{ session('error_dokter') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -48,8 +48,8 @@
                                 <th id="no">{{ $no }}</th>
                                 <td>{{ $d->nama }}</td>
                                 <td>{{ $d->specialty }}</td>
-                                <td class="d-flex justify-content-center"><img src="{{ asset('asset/dokter/' . $d->photo) }}"
-                                        alt=""></td>
+                                <td class="d-flex justify-content-center"><img
+                                        src="{{ asset('asset/dokter/' . $d->photo) }}" alt=""></td>
                                 <td id="no">
                                     <a href="{{ url(Request::url() . '/' . $d->id . '/edit') }}"><i
                                             class="fa-solid fa-pen"></i></a>

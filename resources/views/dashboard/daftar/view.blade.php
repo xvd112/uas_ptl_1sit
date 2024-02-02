@@ -26,7 +26,7 @@
 
                     <div class="col-md-3">
 
-                        <form class="d-inline" action="{{ url(Request::url() . '/' . $data->id) }}" method="POST">
+                        <form class="d-inline" action="{{ url(Request::url()) }}" method="POST">
                             @method('delete')
                             @csrf
                             <button onclick="return confirm('Are you sure to delete this data?')"

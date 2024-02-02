@@ -36,7 +36,7 @@
                         <button class="btn btn-secondary" type="submit"><i
                                 class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-
+                </form>
             <div class="card-body">
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
@@ -82,6 +82,7 @@
                 </table>
                 <div class="mt-3 d-flex justify-content-center">
                     {{ $data->links() }}
+                </div>
             </div>
         </div>
     </div>

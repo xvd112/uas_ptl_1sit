@@ -61,7 +61,16 @@ class KontakController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $rules['alamat'] = 'required|max:255';
+
+        $rules = [
+            'alamat' => 'required|max:1000',
+            'email' => 'required|email:dns',
+            'telepon' => 'required',
+            'twitter' => 'required',
+            'fb' => 'required',
+            'ig' => 'required',
+            'linkin' => 'required',
+        ];
 
         $data = Kontak::find($id);
 

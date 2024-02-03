@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="fb" class="col-sm-2 col-form-label">Facabook</label>
+                        <label for="fb" class="col-sm-2 col-form-label">Facebook</label>
                         <div class="col-sm-10">
                             <input value="{{ $data->fb, old('fb') }}" type="text"
                                 class="form-control @error('fb') is-invalid @enderror" id="fb" name="fb"
